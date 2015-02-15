@@ -1,0 +1,30 @@
+.expense-unit .expense-btn-group{
+    display: none;
+}
+.expense-unit:hover .expense-btn-group{
+    display: block;
+}
+
+
+.site-content{
+    align-content: center;
+    max-width: 600px;
+}
+.expense-unit{
+    padding: 20px 20px;
+}
+.filter-form{
+    background-color: beige;
+    padding: 10px 10px 10px 10px;
+}
+
+.widget-block{
+    padding: 10px 20px 10px 20px;
+    margin: 10px 10px 10px 10px;
+    background-color: #c2c5ff;
+    border-radius: 8px;
+}
+
+.full-width-group{
+    width: 100%;
+}
