@@ -27,12 +27,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="label-danger" ng-show="error">
+                        {{error}}
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <div class="btn-group">
-                    <button class="btn btn-success" data-dismiss="modal" ng-click="login()">Login</button>
-                    <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                <div class="btn-block">
+                    <button class="btn btn-success" ng-click="login()">Login</button>
+                    <button class="btn btn-success" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>

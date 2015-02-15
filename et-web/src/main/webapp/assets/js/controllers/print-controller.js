@@ -17,7 +17,6 @@ angular.module("app").
             $scope.expenses = result;
             $scope.total = _.reduce(_.pluck(result, 'amount'), function(a,b){ return a+b;},0);
             $scope.days = moment($scope.dateTo).diff(moment($scope.dateFrom),'days');
-            // TODO fix digits agter point
             $scope.average = $scope.total/ $scope.days;
         });
 

@@ -3,7 +3,7 @@
  */
 
 angular.module('app', [
-        'ngRoute'
+        'ngRoute','myFilters'
     ]).config(['$routeProvider',
         function ($routeProvider) {
             $routeProvider.

@@ -98,7 +98,6 @@ public class ExpensesServiceImpl implements ExpensesService {
         if (expense.getId() != null) {
             Expense managedExpense = em.getReference(Expense.class, expense.getId());
             BeanUtils.copyProperties(expense, managedExpense, "user","version");
-            // TODO is evrth with version okay?
             expense = em.merge(managedExpense);
         } else {
             throw new InvalidParameterException("Cannot update expense with nulled id!");

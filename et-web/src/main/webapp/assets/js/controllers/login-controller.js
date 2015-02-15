@@ -5,6 +5,13 @@
 angular.module("app").
     controller("LoginController", function ($scope, $rootScope, $location, AuthService) {
 
+
+
+        $scope.$watch('username+password',function(newValue, oldValue){
+            $scope.error = undefined;
+        });
+
+
         //service calls
         $scope.login = function () {
             AuthService.login($scope.username, $scope.password).success(function (result) {
@@ -12,7 +19,7 @@ angular.module("app").
                     $rootScope.authenticated = true;
                     $location.path("expenses");
                 }else{
-                    // TODO error
+                    $scope.error = "Login or password is incorrect";
                 }
             });
         };

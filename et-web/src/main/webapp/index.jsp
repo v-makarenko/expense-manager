@@ -17,6 +17,7 @@
     <script src="assets/js/lib/moment/moment.js"></script>
 
     <!-- angular user js -->
+    <script src="assets/js/filters.js"></script>
     <script src="assets/js/app.js"></script>
 
     <script src="assets/js/controllers/expenses-list-controller.js"></script>
