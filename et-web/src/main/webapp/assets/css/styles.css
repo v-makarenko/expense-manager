@@ -10,9 +10,6 @@
     align-content: center;
     max-width: 600px;
 }
-.expense-unit{
-    padding: 20px 20px;
-}
 .filter-form{
     background-color: beige;
     padding: 10px 10px 10px 10px;
@@ -25,6 +22,33 @@
     border-radius: 8px;
 }
 
+.widget-header{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: #465c6d;
+    padding: 10px;
+    margin: -10px -20px 20px -20px;
+    color: white;
+}
+
+
 .full-width-group{
     width: 100%;
+}
+
+.header-main{
+    padding-bottom: 50px;
+}
+
+.expenses-list{
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 10px ;
+    padding-right: 10px ;
+}
+.expenses-list:nth-child(odd){
+        background-color: #e2e3ff;
+}
+.datepicker {
+    z-index: 2000!important;
 }

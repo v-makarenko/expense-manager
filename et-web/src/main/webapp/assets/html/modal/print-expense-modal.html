@@ -7,19 +7,32 @@
             <div class="modal-body">
                 <form class="form">
                     <h3>Please, select dates range to print</h3>
+
                     <div class="form-group">
-                        <label for="expense-date-from">
+                        <label>
                             Date from:
                         </label>
-                        <input id="expense-date-from" class="form-control" placeholder="YYYY-MM-DD"
-                               ng-model="printParams.dateFrom">
+
+                        <div class="input-group date" datepicker>
+                            <input type="text" class="form-control" ng-model="printParams.dateTo"
+                                   data-date-format="YYYY-MM-DD">
+                <span class="input-group-addon" id="request-date-btn1">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="expense-date-to">
+                        <label>
                             Date to:
                         </label>
-                        <input id="expense-date-to" class="form-control" placeholder="YYYY-MM-DD"
-                               ng-model="printParams.dateTo">
+
+                        <div class="input-group date" datepicker>
+                            <input type="text" class="form-control" ng-model="printParams.dateTo"
+                                   data-date-format="YYYY-MM-DD">
+                <span class="input-group-addon" id="request-date-btn2">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                        </div>
                     </div>
 
                 </form>

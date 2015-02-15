@@ -5,6 +5,8 @@
     <title></title>
 
     <link href="assets/css/lib/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/lib/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="assets/css/lib/datetimepicker.css"  rel="stylesheet" >
     <link href="assets/css/styles.css" rel="stylesheet">
 
     <script src="assets/js/lib/jquery/jquery-1.11.2.js"></script>
@@ -16,6 +18,11 @@
     <script src="assets/js/lib/underscore/underscore.js"></script>
     <script src="assets/js/lib/moment/moment.js"></script>
 
+    <script src="assets/js/lib/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="assets/js/lib/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="assets/js/lib/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+    <script src="assets/js/lib/bootstrap-datetimepicker/moment.js"></script>
+    <script src="assets/js/lib/datetimepicker/datetimepicker.js"></script>
     <!-- angular user js -->
     <script src="assets/js/filters.js"></script>
     <script src="assets/js/app.js"></script>
@@ -34,6 +41,7 @@
     <script src="assets/js/services/user-service.js"></script>
 
     <script src="assets/js/directive/expense-unit.js"></script>
+    <script src="assets/js/directive/datepicker.js"></script>
 
 </head>
 <body ng-app="app">

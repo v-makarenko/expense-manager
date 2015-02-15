@@ -1,132 +1,129 @@
+<div class="row text-center header-main">
+
+    <span class="h1 ">Toptal Expenses List</span>
+</div>
 <div class="row">
     <div class="col-xs-3">
         <div class="widget-block">
-            <form class="form " name="filterForm">
 
-                <h3>Filter</h3>
+            <div class="h3 widget-header"> Filter</div>
+            <form class="form" name="filterForm">
 
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-xs-5">
+                        <div class="col-xs-4">
                             <label>Description</label>
                         </div>
-                        <div class="col-xs-7">
+                        <div class="col-xs-8">
 
                             <input type="text" class="form-control" ng-model="filter.description"></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-xs-5">
+                        <div class="col-xs-4">
                             <label>Comment</label></div>
-                        <div class="col-xs-7">
+                        <div class="col-xs-8">
                             <input type="text" class="form-control" ng-model="filter.comment"></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-xs-5">
-                            <label>Date from</label>
+                        <div class="col-xs-4">
+                            <label>Date&nbsp;from</label>
                         </div>
-                        <div class="col-xs-7">
-                            <input type="text" class="form-control" ng-model="filter.dateFrom"
-                                   placeholder="YYYY-MM-DD">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <label>Date to</label>
-                        </div>
-                        <div class="col-xs-7">
-                            <input type="text" class="form-control" ng-model="filter.dateTo"
-                                   placeholder="YYYY-MM-DD">
+                        <div class="col-xs-8">
+                            <div class="input-group date" datepicker>
+                                <input type="text" class="form-control" ng-model="filter.dateFrom"
+                                       data-date-format="YYYY-MM-DD">
+                <span class="input-group-addon" id="request-date-btn1">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-xs-5">
-                            <label>Min amount</label>
+                        <div class="col-xs-4">
+                            <label>Date&nbsp;to</label>
                         </div>
-                        <div class="col-xs-7">
+                        <div class="col-xs-8">
+                            <div class="input-group date" datepicker>
+                                <input type="text" class="form-control" ng-model="filter.dateTo"
+                                       data-date-format="YYYY-MM-DD">
+                <span class="input-group-addon" id="request-date-btn2">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label>Min&nbsp;amount</label>
+                        </div>
+                        <div class="col-xs-8">
                             <input type="text" class="form-control" ng-model="filter.amountMin">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-xs-5">
-                            <label>Max amount</label>
+                        <div class="col-xs-4">
+                            <label>Max&nbsp;amount</label>
                         </div>
-                        <div class="col-xs-7">
+                        <div class="col-xs-8">
                             <input type="text" class="form-control" ng-model="filter.amountMax">
                         </div>
                     </div>
                 </div>
-                <div class="form-group btn-group">
+                <div class="form-group btn-block">
                     <button class="btn btn-success" ng-click="doFilter()">OK</button>
                     <button class="btn btn-warning" ng-click="clearFilter()">Clear</button>
                 </div>
 
             </form>
         </div>
-        <div class="widget-block">
-            <div style="">Logged as: <b>{{user.username}}</b></div>
-            <button type="button" class="btn btn-warning" ng-click="logout()">Logout</button>
-        </div>
     </div>
     <div class="col-xs-6">
-        <div class="row">
-            <div class="col-xs-4">
-                <span class="h1">ExpensesList</span></div>
-            <div class="col-xs-8">
-                <div class="pull-right btn-group">
-                    <button type="button" class="btn  btn-success" ng-click="addEditExpense()"><span
-                            class="glyphicon glyphicon-plus"></span>
-                    </button>
-                    <button type="button" class="btn  btn-success" ng-click="openPrintDialog()"><span
-                            class="glyphicon glyphicon-print"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div id="expenses_table">
-            <table class="table">
-                <thead>
-
-                </thead>
-                <tbody>
-                <tr ng-show="!expenses || expenses.length == 0" class="widget-block">
-                    <td>
-                        <h4>
-                            No data to show!
-                        </h4>
+        <div class="widget-block">
+            <div class="h3 widget-header" style="margin-bottom: 0px"> Recent expenses</div>
+            <div ng-show="!expenses || expenses.length == 0" class="widget-block">
+                <h4>
+                    No data to show!
+                </h4>
                             <span>
-                                Clear filter or add some new expenses ^_^
+                                Clear filter or add some new expenses :)
                             </span>
-                    </td>
-                </tr>
-                <tr ng-repeat="expense in expenses" class="widget-block">
-                    <td>
-                        <div expense-unit
-                             delete-lnr="deleteExpense(id)"
-                             edit-lnr="addEditExpense(id)"
-                             expense-model="expense"></div>
-                    </td>
-                </tr>
+            </div>
+            <div ng-repeat="expense in expenses" class="expenses-list row">
+                <div expense-unit
+                     delete-lnr="deleteExpense(id)"
+                     edit-lnr="addEditExpense(id)"
+                     expense-model="expense"></div>
 
-                </tbody>
+            </div>
 
-            </table>
         </div>
     </div>
     <div class="col-xs-3">
+
+        <div class="row">
+            <div class="widget-block">
+                <div class="h4 widget-header">Common actions</div>
+                <button type="button" class="btn full-width-group btn-success" style="margin-bottom: 8px" ng-click="addEditExpense()">Add expense
+                </button>
+                <button type="button" class="btn full-width-group btn-success" ng-click="openPrintDialog()"></span>Print expenses
+                </button>
+            </div>
+        <div class="widget-block row">
+            <div class="col-xs-8" >Logged as: <b>{{user.username}}</b></div>
+            <button type="button" class="btn btn-warning col-xs-4" ng-click="logout()">Logout</button>
+        </div>
+</div>
     </div>
 
-</div>
-
-<ng-include src="'assets/html/modal/new-expense-modal.html'"></ng-include>
-<ng-include src="'assets/html/modal/print-expense-modal.html'"></ng-include>
+    <ng-include src="'assets/html/modal/new-expense-modal.html'"></ng-include>
+    <ng-include src="'assets/html/modal/print-expense-modal.html'"></ng-include>
