@@ -37,7 +37,7 @@ public class AuthResource {
             return Response.ok(result).build();
         } else {
             userService.createUser(user);
-            return Response.ok().build();
+            return Response.ok(new LoginPassCheckResult().status(AppConsts.RESPONSE_OK)).build();
         }
     }
 
