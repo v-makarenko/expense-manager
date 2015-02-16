@@ -1,7 +1,7 @@
 <div id="login-modal" class="modal fade" ng-controller="LoginController">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class="form" name="loginForm" ng-submit="login()">
+            <form class="form" name="myForm" ng-submit="login()" ng-controller="ModalController">
             <div class="modal-header">
                 Input your login and password
             </div>
@@ -12,7 +12,7 @@
                                 <label>Username: </label>
                             </div>
                             <div class="col-xs-7">
-                                <input type="text" class="form-control" ng-model="username">
+                                <input type="text" class="form-control" ng-model="user.username">
                             </div>
 
                         </div>
@@ -23,7 +23,7 @@
                                 <label>Password</label>
                             </div>
                             <div class="col-xs-7">
-                                <input type="password" class="form-control" ng-model="password">
+                                <input type="password" class="form-control" ng-model="user.password">
                             </div>
                         </div>
                     </div>

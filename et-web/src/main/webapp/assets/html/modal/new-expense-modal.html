@@ -1,7 +1,7 @@
 <div id="edit-expense-modal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class="form" name="newExpenseForm"  ng-submit="saveExpense()">
+            <form class="form" name="myForm"  ng-submit="saveExpense()" ng-controller="ModalController">
                 <div class="modal-header">
                     <h3>{{newExpense ? "New Expense" : "Edit Expense"}}</h3>
                 </div>

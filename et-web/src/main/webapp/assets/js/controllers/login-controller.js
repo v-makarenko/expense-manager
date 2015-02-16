@@ -5,16 +5,16 @@
 angular.module("app").
     controller("LoginController", function ($scope, $rootScope, $location, AuthService) {
 
+        $scope.user = {}
 
-
-        $scope.$watch('username+password',function(newValue, oldValue){
+        $scope.$watch('user.username+user.password',function(newValue, oldValue){
             $scope.error = undefined;
         });
 
 
         //service calls
         $scope.login = function () {
-            AuthService.login($scope.username, $scope.password).success(function (result) {
+            AuthService.login($scope.user.username, $scope.user.password).success(function (result) {
                 if (result.status == 'OK') {
                     $rootScope.authenticated = true;
                     $location.path("expenses");

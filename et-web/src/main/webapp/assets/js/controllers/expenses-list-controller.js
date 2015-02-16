@@ -9,6 +9,7 @@ angular.module("app").
         $scope.filter = {};
         $scope.expenses = [];
         $scope.currentExpense = {};
+        $scope.printParams = {};
 
 
         // expense CRUD
@@ -40,7 +41,7 @@ angular.module("app").
                 $scope.updateExpenses();
                 $scope.currentExpense = {};
                 $("#edit-expense-modal").modal("hide");
-                this.newExpenseForm.$setPristine();
+                $rootScope.$broadcast('modal-reset');
             });
         };
 

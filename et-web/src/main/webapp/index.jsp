@@ -35,6 +35,7 @@
     <script src="assets/js/controllers/main-page-controller.js"></script>
     <script src="assets/js/controllers/login-controller.js"></script>
     <script src="assets/js/controllers/registration-controller.js"></script>
+    <script src="assets/js/controllers/modal-controller.js"></script>
 
     <script src="assets/js/services/expenses-service.js"></script>
     <script src="assets/js/services/auth-service.js"></script>
