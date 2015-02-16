@@ -3,21 +3,21 @@
  */
 
 angular.module("app").
-    controller("RegistrationController", function($scope, $location, UserService){
+    controller("RegistrationController", function($scope, $location, UserService, AuthService){
 
         // init
         $scope.newUser = {};
 
 
-        $scope.checkLogin = function () {
-            UserService.checkLogin($scope.newUser.username).success(function (result) {
+        $scope.checkUsername = function () {
+            UserService.checkUsername($scope.newUser.username).success(function (result) {
                 $scope.loginError = result.ok ? undefined : result.msg;
             });
         };
 
         $scope.register = function () {
-            UserService.createUser($scope.newUser).success(function (result){
-
+            AuthService.register($scope.newUser).success(function (result){
+                $("#registration-modal").modal("hide");
             });
         }
 

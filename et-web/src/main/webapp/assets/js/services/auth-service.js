@@ -7,6 +7,11 @@ angular.module("app")
         function ExtInvestigationRequestsService($http) {
             var url = "api/auth";
 
+            this.register = function (user) {
+                return $http.post(url + "/register", user);
+            };
+
+
             this.login = function (username, password) {
                 return $http.post(url + "/login",{username: username, password : password});
             };

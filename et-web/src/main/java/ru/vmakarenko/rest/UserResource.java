@@ -26,9 +26,9 @@ public class UserResource {
     private UserService userService;
 
     @GET
-    @Path("checkLogin")
+    @Path("checkUsername")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response checkLogin(@QueryParam(value = "login") String username){
+    public Response checkUsername(@QueryParam(value = "username") String username){
         return Response.ok(userService.validateUsername(username)).build();
 
     }

@@ -1,11 +1,11 @@
 <div id="login-modal" class="modal fade" ng-controller="LoginController">
     <div class="modal-dialog">
         <div class="modal-content">
+            <form class="form" name="loginForm" ng-submit="login()">
             <div class="modal-header">
                 Input your login and password
             </div>
             <div class="modal-body">
-                <form class="form" name="loginForm">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-5">
@@ -23,21 +23,21 @@
                                 <label>Password</label>
                             </div>
                             <div class="col-xs-7">
-                                <input type="text" class="form-control" ng-model="password">
+                                <input type="password" class="form-control" ng-model="password">
                             </div>
                         </div>
                     </div>
                     <div class="label-danger" ng-show="error">
                         {{error}}
                     </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <div class="btn-block">
-                    <button class="btn btn-success" ng-click="login()">Login</button>
+                    <button class="btn btn-success" type="submit">Login</button>
                     <button class="btn btn-success" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>

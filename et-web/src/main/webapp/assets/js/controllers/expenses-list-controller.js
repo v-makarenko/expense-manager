@@ -39,6 +39,7 @@ angular.module("app").
             service($scope.currentExpense).success(function () {
                 $scope.updateExpenses();
                 $scope.currentExpense = {};
+                $("#edit-expense-modal").modal("hide");
                 this.newExpenseForm.$setPristine();
             });
         };

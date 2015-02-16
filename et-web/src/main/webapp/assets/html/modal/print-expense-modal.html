@@ -1,11 +1,11 @@
 <div id="print-expense-modal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1>Print expenses</h1>
-            </div>
-            <div class="modal-body">
-                <form class="form">
+            <form ng-submit="openPageToPrint()">
+                <div class="modal-header">
+                    <h1>Print expenses</h1>
+                </div>
+                <div class="modal-body">
                     <h3>Please, select dates range to print</h3>
 
                     <div class="form-group">
@@ -14,7 +14,7 @@
                         </label>
 
                         <div class="input-group date" datepicker>
-                            <input type="text" class="form-control" ng-model="printParams.dateTo"
+                            <input type="text" class="form-control" ng-model="printParams.dateFrom"
                                    data-date-format="YYYY-MM-DD">
                 <span class="input-group-addon" id="request-date-btn1">
                   <span class="glyphicon glyphicon-calendar"></span>
@@ -35,12 +35,12 @@
                         </div>
                     </div>
 
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn" ng-click="openPageToPrint()" data-dismiss="modal">Print</button>
-                <button type="button" class="btn" data-dismiss="modal">Cancel</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" type="submit">Print</button>
+                    <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

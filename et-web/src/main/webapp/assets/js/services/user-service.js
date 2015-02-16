@@ -7,8 +7,8 @@ angular.module("app")
         function UserService($http) {
             var url = "api/user";
 
-            this.checkLogin = function (login) {
-                return $http.get(url + "/checkLogin?login=" + login );
+            this.checkUsername = function (username) {
+                return $http.get(url + "/checkUsername?username=" + username );
             };
 
             this.createUser = function (user) {

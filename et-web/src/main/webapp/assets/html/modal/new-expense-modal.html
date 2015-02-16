@@ -1,11 +1,11 @@
 <div id="edit-expense-modal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h3>{{newExpense ? "New Expense" : "Edit Expense"}}</h3>
-            </div>
-            <div class="modal-body">
-                <form class="form" name="newExpenseForm">
+            <form class="form" name="newExpenseForm"  ng-submit="saveExpense()">
+                <div class="modal-header">
+                    <h3>{{newExpense ? "New Expense" : "Edit Expense"}}</h3>
+                </div>
+                <div class="modal-body">
                     <div class="form-group">
                         <label for="expense-amount">
                             Amount:
@@ -85,14 +85,14 @@
                             </small>
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn" ng-click="saveExpense()" data-dismiss="modal"
-                        ng-disabled="newExpenseForm.$error.required || newExpenseForm.$error.pattern">Save
-                </button>
-                <button type="button" class="btn" data-dismiss="modal">Cancel</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn"
+                            ng-disabled="newExpenseForm.$error.required || newExpenseForm.$error.pattern">Save
+                    </button>
+                    <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
