@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created by VMakarenko on 2/3/15.
@@ -119,7 +120,11 @@ public class Expense extends DefaultEntity {
                 if (time != null) {
                     timeL += new SimpleDateFormat(AppConsts.TIME_FORMAT).parse(time).getTime();
                 }
-                dateTime = new Date(timeL);
+                Calendar c = Calendar.getInstance();
+                // because of Russian changes in timezones
+                c.setTimeInMillis(timeL + TimeZone.getTimeZone("GMT+3").getOffset(c.getTime().getTime())) ;
+
+                dateTime =c.getTime();
             } catch (ParseException e) {
                 logger.error("Illegal date/time for expense: " + date + ", " + time);
                 throw new RuntimeException(e);
