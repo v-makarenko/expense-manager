@@ -3,7 +3,7 @@
  */
 
 angular.module('app', [
-        'ngRoute','myFilters'
+        'ngRoute','myFilters', 'chart.js'
     ]).config(['$routeProvider',
         function ($routeProvider) {
             $routeProvider.

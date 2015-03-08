@@ -64,6 +64,9 @@ angular.module("app").
             $("#print-expense-modal").modal();
         };
 
+        $scope.openChartModal = function(){
+            $("#chart-expense-modal").modal();
+        };
         $scope.openPageToPrint = function(){
             $location.path("print/"+ $scope.printParams.dateFrom + "/" + $scope.printParams.dateTo )
         };

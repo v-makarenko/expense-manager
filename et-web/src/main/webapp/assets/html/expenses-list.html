@@ -115,7 +115,9 @@
                 <div class="h4 widget-header">Common actions</div>
                 <button type="button" class="btn full-width-group btn-success" style="margin-bottom: 8px" ng-click="addEditExpense()">Add expense
                 </button>
-                <button type="button" class="btn full-width-group btn-success" ng-click="openPrintDialog()"></span>Print expenses
+                <button type="button" class="btn full-width-group btn-success" style="margin-bottom: 8px" ng-click="openPrintDialog()"></span>Print expenses
+                </button>
+                <button type="button" class="btn full-width-group btn-success" ng-click="openChartModal()"></span>Statistics
                 </button>
             </div>
         <div class="widget-block row">
@@ -127,3 +129,4 @@
 
     <ng-include src="'assets/html/modal/new-expense-modal.html'"></ng-include>
     <ng-include src="'assets/html/modal/print-expense-modal.html'"></ng-include>
+    <ng-include src="'assets/html/modal/chart-expense-modal.html'"></ng-include>

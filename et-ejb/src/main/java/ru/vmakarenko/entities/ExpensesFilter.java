@@ -15,6 +15,8 @@ public class ExpensesFilter {
     private String description;
     private String comment;
     private User user;
+    private Date timestampFrom;
+    private Date timestampTo;
 
 
     public Integer getAmountMin() {
@@ -71,5 +73,31 @@ public class ExpensesFilter {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public ExpensesFilter timestampFrom(Date date){
+        timestampFrom = date;
+        return this;
+    }
+
+    public ExpensesFilter timestampTo(Date date){
+        timestampTo = date;
+        return this;
+    }
+
+    public Date getTimestampFrom() {
+        return timestampFrom;
+    }
+
+    public void setTimestampFrom(Date timestampFrom) {
+        this.timestampFrom = timestampFrom;
+    }
+
+    public Date getTimestampTo() {
+        return timestampTo;
+    }
+
+    public void setTimestampTo(Date timestampTo) {
+        this.timestampTo = timestampTo;
     }
 }

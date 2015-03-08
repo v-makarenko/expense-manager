@@ -1,0 +1,30 @@
+<div id="chart-expense-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form ng-submit="openPageToPrint()" name="myForm" ng-controller="ModalController">
+                <div class="modal-header">
+                    <h1>Statistics</h1>
+                </div>
+                <div class="modal-body">
+                    Stats for the last&nbsp;    <select  ng-model="periodId">
+                        <option value="0">Day</option>
+                        <option value="1">Week</option>
+                        <option value="2">Month</option>
+                        <option value="3">Year</option>
+                    </select>
+                    <canvas id="line" class="chart chart-line" data="chartData"
+                            labels="labels" legend="true" series="series"
+                            click="onClick">
+
+                    </canvas>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" type="submit">To Excel</button>
+                    <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
