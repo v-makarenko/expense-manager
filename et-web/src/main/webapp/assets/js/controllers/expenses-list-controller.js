@@ -85,4 +85,16 @@ angular.module("app").
         });
 
 
+        $scope.$watch('filter.amountMin', function (newValue, oldValue){
+            if(!/^\d*$/.test(newValue)){
+                $scope.filter.amountMin = oldValue;
+            }
+        });
+        $scope.$watch('filter.amountMax', function (newValue, oldValue){
+            if(!/^\d*$/.test(newValue)){
+                $scope.filter.amountMax = oldValue;
+            }
+        });
+
+
     });

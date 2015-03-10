@@ -7,21 +7,21 @@ import java.util.*;
  * Created by VMakarenko on 3/4/15.
  */
 public class ListGenUtils {
-    public static List<Long> getList(GroupByType type){
+    public static List<Long> getList(int type){
         List<Long> resultList = new ArrayList<>();
         int q = 0;
         switch (type){
-            case DAY:
-                q = 7;
-                break;
-            case HOUR:
+            case 0:
                 q = 24;
                 break;
-            case MONTH:
-                q = 12;
+            case 1:
+                q = 7;
                 break;
-            case WEEK:
-                q = Calendar.getInstance().getMaximum(Calendar.WEEK_OF_MONTH);
+            case 2:
+                q = Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH);
+                break;
+            case 3:
+                q = 12;
                 break;
         }
         for(int i = 0; i < q ; i++){

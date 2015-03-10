@@ -1,22 +1,14 @@
 package ru.vmakarenko.rest;
 
-import ru.vmakarenko.common.AppConsts;
-import ru.vmakarenko.common.GroupByType;
-import ru.vmakarenko.entities.Expense;
-import ru.vmakarenko.entities.ExpensesFilter;
-import ru.vmakarenko.entities.User;
 import ru.vmakarenko.services.ChartService;
-import ru.vmakarenko.services.ExpensesService;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import java.util.Calendar;
-import java.util.List;
 
 /**
  * Created by VMakarenko on 2/4/15.
@@ -29,32 +21,32 @@ public class ChartResource {
     private ChartService chartService;
 
     @GET
-    public Response getData(@QueryParam(value = "for") String period) {
+    public Response getData(@QueryParam(value = "for") int period) {
         Calendar to = Calendar.getInstance();
         Calendar from = Calendar.getInstance();
-        GroupByType groupByType = GroupByType.HOUR;
+        int groupByType = 0;
         switch (period) {
-            case "year":
+            case 3:
                 from.set(Calendar.MONTH, 0);
-            case "month":
+            case 2:
                 from.set(Calendar.DAY_OF_MONTH, 0);
-            case "week":
-                from.set(Calendar.DAY_OF_WEEK, 0);
-            case "day":
+            case 1:
+                from.set(Calendar.DAY_OF_MONTH, 0);
+            case 0:
                 from.set(Calendar.HOUR_OF_DAY, 0);
         }
         switch (period) {
-            case "year":
-                groupByType = GroupByType.MONTH;
+            case 3:
+                groupByType = 3;
                 break;
-            case "month":
-                groupByType = GroupByType.WEEK;
+            case 2:
+                groupByType = 2;
                 break;
-            case "week":
-                groupByType = GroupByType.DAY;
+            case 1:
+                groupByType = 1;
                 break;
-            case "day":
-                groupByType = GroupByType.HOUR;
+            case 0:
+                groupByType = 0;
                 break;
         }
 

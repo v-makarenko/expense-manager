@@ -2,7 +2,6 @@ package ru.vmakarenko.services.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.vmakarenko.common.GroupByType;
 import ru.vmakarenko.common.ListGenUtils;
 import ru.vmakarenko.services.ChartService;
 
@@ -28,19 +27,19 @@ public class ChartServiceImpl implements ChartService {
 
 
     @Override
-    public List<Long> getOrdered(Date from, Date to, GroupByType type) {
+    public List<Long> getOrdered(Date from, Date to, int type) {
         String formattingPart = "";
         switch (type) {
-            case HOUR:
+            case 0:
                 formattingPart = "to_char(date_time, 'HH24')";
                 break;
-            case DAY:
+            case 1:
+                formattingPart = "to_char(date_time, 'D')";
+                break;
+            case 2:
                 formattingPart = "to_char(date_time, 'DD')";
                 break;
-            case WEEK:
-                formattingPart = "to_char(date_time, 'W')";
-                break;
-            case MONTH:
+            case 3:
                 formattingPart = "to_char(date_time, 'MM')";
                 break;
         }
@@ -50,8 +49,9 @@ public class ChartServiceImpl implements ChartService {
         List<Object[]> resultList = em.createNativeQuery(query).setParameter("dateTimeFrom", from).setParameter("dateTimeTo", to).getResultList();
         List<Long> list = ListGenUtils.getList(type);
         for (Object[] row : resultList) {
-            list.set(Integer.parseInt((String) row[1]), ((BigDecimal) row[0]).subtract(new BigDecimal(1)).longValue());
+            list.set(Integer.parseInt((String) row[1]) - 1, ((BigDecimal) row[0]).subtract(new BigDecimal(1)).longValue());
         }
         return list;
     }
+
 }
