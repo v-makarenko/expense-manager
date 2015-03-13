@@ -51,7 +51,7 @@
                                 <label>E-mail: </label>
                             </div>
                             <div class="col-xs-7">
-                                <input type="email" class="form-control" name="eMail" ng-model="newUser.eMail"  required>
+                                <input type="text" class="form-control" ng-model="newUser.eMail"  required>
                                 <small class="text-danger" ng-show="emailError">
                                     {{emailError}}
                                 </small>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="btn-block">
-                        <button class="btn btn-success" type="submit" ng-disabled="passError || loginError || !myForm.$valid">Register</button>
+                        <button class="btn btn-success" type="submit" ng-disabled="passError || loginError || emailError || !myForm.$valid">Register</button>
                         <button class="btn btn-success" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>

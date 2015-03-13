@@ -1,6 +1,7 @@
 package ru.vmakarenko.rest;
 
 import ru.vmakarenko.common.AppConsts;
+import ru.vmakarenko.common.RestResult;
 import ru.vmakarenko.entities.Expense;
 import ru.vmakarenko.entities.ExpensesFilter;
 import ru.vmakarenko.entities.User;
@@ -28,22 +29,30 @@ public class ExpensesResource {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Expense getById(@PathParam(value = "id") Long id){
-        return expensesService.getById(id);
+    public Response getById(@PathParam(value = "id") Long id, @Context HttpServletRequest request){
+        try{
+            return Response.ok(expensesService.getById(id)).build();
+        }catch ( Exception e){
+            return Response.ok(RestResult.getBad()).build();
+        }
     }
 
     @POST
     @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Expense> getAll(ExpensesFilter filter, @Context HttpServletRequest request){
+    public Response getAll(ExpensesFilter filter, @Context HttpServletRequest request){
+        Object userObj = request.getSession().getAttribute(AppConsts.CURRENT_USER_ATTRIBUTE);
+        if(userObj == null) Response.ok(RestResult.getBad()).build();
         filter.setUser((User) request.getSession().getAttribute(AppConsts.CURRENT_USER_ATTRIBUTE));
-        return expensesService.getAll(filter);
+        return Response.ok(expensesService.getAll(filter)).build();
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateExpense(Expense expense){
+    public Response updateExpense(Expense expense, @Context HttpServletRequest request){
+        Object userObj = request.getSession().getAttribute(AppConsts.CURRENT_USER_ATTRIBUTE);
+        if(userObj == null) Response.ok(RestResult.getBad()).build();
         return Response.ok(expensesService.update(expense)).build();
     }
 
@@ -51,6 +60,8 @@ public class ExpensesResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createExpense(Expense expense, @Context HttpServletRequest request){
+        Object userObj = request.getSession().getAttribute(AppConsts.CURRENT_USER_ATTRIBUTE);
+        if(userObj == null) Response.ok(RestResult.getBad()).build();
         return Response.ok(
                 expensesService.create(expense,
                         (User)request.getSession().getAttribute(AppConsts.CURRENT_USER_ATTRIBUTE)
@@ -60,7 +71,9 @@ public class ExpensesResource {
 
     @DELETE
     @Path("{id}")
-    public Response deleteExpense(@PathParam(value = "id") Long id){
+    public Response deleteExpense(@PathParam(value = "id") Long id, @Context HttpServletRequest request){
+        Object userObj = request.getSession().getAttribute(AppConsts.CURRENT_USER_ATTRIBUTE);
+        if(userObj == null) Response.ok(RestResult.getBad()).build();
         expensesService.delete(id);
         return Response.ok().build();
     }

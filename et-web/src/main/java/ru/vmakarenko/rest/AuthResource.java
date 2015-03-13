@@ -9,10 +9,7 @@ import ru.vmakarenko.services.UserService;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -30,6 +27,7 @@ public class AuthResource {
 
     @POST
     @Path("register")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response register(User user) {
         LoginPassCheckResult result  = userService.vaidateUser(user);
@@ -43,6 +41,7 @@ public class AuthResource {
 
     @POST
     @Path("login")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response login(LoginDto loginDto, @Context HttpServletRequest request) {
         User user = authService.login(loginDto.getUsername(), loginDto.getPassword());

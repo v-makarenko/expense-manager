@@ -72,7 +72,10 @@ public class UserServiceImpl implements UserService {
                     result.field("password").status(AppConsts.RESPONSE_ERROR).msg(AppConsts.PASSWORD_ERROR_NOT_EQUALS);
                 }
                 if(!user.getPassword().matches("\\w+")){
-                    result.field("password").status(AppConsts.RESPONSE_ERROR).msg(AppConsts.PASSWORD_ERROR_NOT_EQUALS);
+                    result.field("password").status(AppConsts.RESPONSE_ERROR).msg(AppConsts.PASSWORD_ERROR_ALPHANUMERIC);
+                }
+                if(!user.geteMail().matches("\\S+@\\S+\\.\\S+")){
+                    result.field("email").status(AppConsts.RESPONSE_ERROR).msg(AppConsts.EMAIL_ERROR_ALPHANUMERIC);
                 }
 
             }

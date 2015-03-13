@@ -1,13 +1,21 @@
 package ru.vmakarenko.rest;
 
+import ru.vmakarenko.common.AppConsts;
+import ru.vmakarenko.common.RestResult;
 import ru.vmakarenko.services.ChartService;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
+import java.security.Security;
 import java.util.Calendar;
 
 /**
@@ -21,7 +29,11 @@ public class ChartResource {
     private ChartService chartService;
 
     @GET
-    public Response getData(@QueryParam(value = "for") int period) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getData(@QueryParam(value = "for") int period, @Context HttpServletRequest request) {
+        if(request.getSession().getAttribute(AppConsts.CURRENT_USER_ATTRIBUTE) == null){
+            return Response.ok(RestResult.getBad()).build();
+        }
         Calendar to = Calendar.getInstance();
         Calendar from = Calendar.getInstance();
         int groupByType = 0;

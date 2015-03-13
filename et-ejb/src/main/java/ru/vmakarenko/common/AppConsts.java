@@ -19,4 +19,6 @@ public class AppConsts {
 
     public static final String PASSWORD_ERROR_NOT_EQUALS = "Passwords are different!";
     public static final String PASSWORD_ERROR_ALPHANUMERIC = "Password should contain only alphanumeric symbols";
+
+    public static final String EMAIL_ERROR_ALPHANUMERIC = "Provided e-mail is not correct!";
 }
