@@ -1,7 +1,7 @@
 <div id="edit-expense-modal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class="form" name="myForm"  ng-submit="saveExpense()" ng-controller="ModalController">
+            <form class="form" name="newExpenseForm"  ng-submit="saveExpense()" ng-controller="ModalController">
                 <div class="modal-header">
                     <h3>{{newExpense ? "New Expense" : "Edit Expense"}}</h3>
                 </div>
@@ -11,7 +11,6 @@
                             Amount:
                         </label>
                         <input id="expense-amount" name="expenseAmount" class="form-control" placeholder="Enter amount"
-                               ng-pattern="/^\d+$/"
                                ng-required maxlength="19"
                                ng-model="currentExpense.amount">
 
@@ -78,17 +77,30 @@
                                maxlength="5"
                                ng-model="currentExpense.time">
 
-                        <div class="error-container" ng-show="newExpenseForm.expenseTime.$dirty">
+                        <div class="error-container">
                             <small class="text-danger"
                                    ng-show="newExpenseForm.expenseTime.$error.required">
                                 Time is required
                             </small>
+                            <small class="text-danger"
+                                   ng-show="currentExpenseTimeInvalid">
+                                Time format should be HH:MM
+                            </small>
                         </div>
                     </div>
+                    <!--<div>-->
+                        <!--{{newExpenseForm.$valid}}-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--{{newExpenseForm}}-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--{{myForm}}-->
+                    <!--</div>-->
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn"
-                            ng-disabled="newExpenseForm.$error.required || newExpenseForm.$error.pattern">Save
+                            ng-disabled="!newExpenseForm.$valid">Save
                     </button>
                     <button type="button" class="btn" data-dismiss="modal">Cancel</button>
                 </div>

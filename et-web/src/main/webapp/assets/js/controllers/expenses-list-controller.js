@@ -4,6 +4,10 @@
 
 angular.module("app").
     controller("ExpensesListController", function ($scope, $rootScope, $location, ExpensesService, AuthService) {
+        // const
+        const NUMBER_REGEX = /^\d+$/;
+        const TIME_REGEX = /^\d{2}:\d{2}$/;
+
 
         // initialization
         $scope.filter = {};
@@ -40,7 +44,7 @@ angular.module("app").
             service($scope.currentExpense).success(function () {
                 $scope.updateExpenses();
                 $scope.currentExpense = {};
-                $("#edit-expense-modal").modal("hide");
+                $('#edit-expense-modal').modal('hide');
                 $rootScope.$broadcast('modal-reset');
             });
         };
@@ -90,12 +94,25 @@ angular.module("app").
                 $scope.filter.amountMin = oldValue;
             }
         });
+
         $scope.$watch('filter.amountMax', function (newValue, oldValue){
             if(newValue && newValue != oldValue && !/^\d*$/.test(newValue)){
                 $scope.filter.amountMax = oldValue;
             }
         });
 
+        $scope.$watch('currentExpense.amount', function (newValue, oldValue){
+            if(newValue && newValue != oldValue && !NUMBER_REGEX.test($scope.currentExpense.amount)) {
+                $scope.currentExpense.amount = oldValue;
+            }
+        });
 
+        $scope.$watch('currentExpense.time', function (newValue, oldValue){
+            if(newValue && newValue != oldValue && !TIME_REGEX.test($scope.currentExpense.time)) {
+                $scope.currentExpenseTimeInvalid = true;
+            }else{
+                $scope.currentExpenseTimeInvalid = false;
+            }
+        });
 
     });
