@@ -1,0 +1,26 @@
+<div class="row expense-unit">
+    <div class="col-xs-5">
+        <div class="h3 ">
+            {{model.description}}
+        </div>
+        <div class="text-muted">
+            {{model.comment}}
+        </div>
+    </div>
+    <div class="col-xs-2" style="margin-top:15px">
+        {{model.date}} {{model.time}}
+    </div>
+    <div class="col-xs-3 h3 text-danger text-right">
+        {{model.amount}}$
+    </div>
+    <div class="col-xs-2 text-right" >
+        <div class="expense-btn-group" style="margin-top:15px">
+            <button class="btn btn-success" ng-click="editExpense(model.id)" style=" margin-bottom: 3px"><span
+                    class="glyphicon glyphicon-edit"></span>
+            </button>
+                <button class="btn btn-warning" ng-click="deleteExpense(model.id)" style="color: red"><span
+                        class="glyphicon glyphicon-remove"></span>
+                </button>
+        </div>
+    </div>
+</div>

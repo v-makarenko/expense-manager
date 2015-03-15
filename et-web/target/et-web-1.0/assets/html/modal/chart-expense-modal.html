@@ -1,0 +1,25 @@
+<div id="chart-expense-modal" class="modal fade">
+    <div class="modal-dialog" style="width:900px">
+        <div class="modal-content">
+            <form name="myForm" ng-controller="ChartController">
+                <div class="modal-header">
+                    <h1>Statistics</h1>
+                </div>
+                <div class="modal-body">
+                    Stats for the last&nbsp;    <select ng-options="option.id as option.text for option in options" ng-model="periodId">
+                        </select>
+                    <canvas id="line" class="chart chart-line" data="chartData"
+                            labels="labels" series="series"
+                            click="onClick">
+
+                    </canvas>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">OK</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
