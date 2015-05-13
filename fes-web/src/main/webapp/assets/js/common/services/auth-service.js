@@ -12,8 +12,8 @@ angular.module("app")
             };
 
 
-            this.login = function (username, password) {
-                return $http.post(url + "/login",{username: username, password : password});
+            this.login = function (email, password) {
+                return $http.post(url + "/login",{email: email, password : password});
             };
 
 

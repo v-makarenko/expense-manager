@@ -9,6 +9,9 @@ public class AccessAuthDto {
     private String token;
     private String id;
 
+    public static final String COOKIE_TOKEN = "COOKIE_TOKEN";
+    public static final String COOKIE_ID = "COOKIE_ID";
+
     public String getId() {
         return id;
     }

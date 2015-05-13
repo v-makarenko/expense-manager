@@ -37,7 +37,7 @@
     <script src="assets/js/landing/controllers/registration-controller.js"></script>
     <script src="assets/js/landing/controllers/modal-controller.js"></script>
 
-    <script src="assets/js/landing/services/auth-service.js"></script>
+    <script src="assets/js/common/services/auth-service.js"></script>
     <script src="assets/js/landing/services/user-service.js"></script>
 
     <script src="assets/js/common/directive/datepicker.js"></script>

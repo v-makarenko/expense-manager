@@ -7,19 +7,19 @@ import ru.fes.dao.anno.FilterParam;
  */
 public class UserFilter extends BasicFilter {
     @FilterParam
-    private String username;
+    private String email;
     @FilterParam
     private String password;
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
-    public UserFilter username(String username) {
-        this.username = username;
+    public UserFilter email(String email) {
+        this.email = email;
         return this;
     }
 

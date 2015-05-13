@@ -8,13 +8,16 @@ import ru.fes.dto.user.UserAuthDto;
 import ru.fes.dto.user.UserDto;
 import ru.fes.entities.common.User;
 import ru.fes.services.AuthService;
+import ru.fes.services.TokenService;
 import ru.fes.services.UserService;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 
 /**
@@ -26,6 +29,8 @@ public class AuthResource {
     UserService userService;
     @Inject
     AuthService authService;
+    @Inject
+    TokenService tokenService;
 
     @POST
     @Path("register")
@@ -43,7 +48,10 @@ public class AuthResource {
     public Response login(UserAuthDto dto, @Context HttpServletRequest request) {
         AccessAuthDto accessAuthDto = authService.login(dto);
         if (accessAuthDto != null) {
-            return Response.ok(RestResult.getOk()).build();
+            tokenService.createEntry(accessAuthDto.getId(), accessAuthDto.getToken());
+            NewCookie tokenCookie = new NewCookie(AccessAuthDto.COOKIE_TOKEN, accessAuthDto.getToken(), null, null, "", -1, false);
+            NewCookie idCookie = new NewCookie(AccessAuthDto.COOKIE_ID, accessAuthDto.getId(), null, null, "", -1, false);
+            return Response.ok(RestResult.getOk()).cookie(tokenCookie).cookie(idCookie).build();
         } else {
             return Response.ok(RestResult.getBad()).build();
         }
@@ -76,8 +84,20 @@ public class AuthResource {
     @Path("isAuthenticated")
     @Produces(MediaType.APPLICATION_JSON)
     public Response isAuthenticated(@Context HttpServletRequest request) {
-        User user = (User) request.getSession().getAttribute("currentUser");
-        return Response.ok(user != null ? RestResult.getOk() : RestResult.getBad()).build();
+        Cookie[] cookies = request.getCookies();
+
+        String token = "";
+        String id = "";
+        for(Cookie cookie: cookies){
+            if(cookie.getName().equals(AccessAuthDto.COOKIE_TOKEN)){
+                token = cookie.getValue();
+            }
+            if(cookie.getName().equals(AccessAuthDto.COOKIE_ID)){
+                id = cookie.getValue();
+            }
+        }
+
+        return Response.ok(tokenService.checkEntry(id, token)? RestResult.getOk() : RestResult.getBad()).build();
     }
 }
 

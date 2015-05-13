@@ -42,7 +42,7 @@
     <script src="assets/js/expenses/controllers/chart-controller.js"></script>
 
     <script src="assets/js/expenses/services/expenses-service.js"></script>
-    <script src="assets/js/expenses/services/auth-service.js"></script>
+    <script src="assets/js/common/services/auth-service.js"></script>
     <script src="assets/js/expenses/services/user-service.js"></script>
     <script src="assets/js/expenses/services/chart-service.js"></script>
 

@@ -10,6 +10,7 @@ import ru.fes.entities.common.User;
 import ru.fes.services.common.MapperService;
 import ru.fes.services.expenses.CategoryService;
 
+import javax.ejb.Singleton;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -21,32 +22,32 @@ import java.util.Map;
 /**
  * Created by VMakarenko on 2/4/15.
  */
-@Stateless
+@Singleton
 public class TokenService {
     private Map<String, String> tokenMap = new HashMap();
 
-    public  synchronized boolean createEntry(String token, String id){
-        if(checkEntry(token, id)){
+    public  synchronized boolean createEntry(String id, String token){
+        if(checkEntry(id, token)){
             return false;
         }else {
-            tokenMap.put(token, id);
+            tokenMap.put(id, token);
             return true;
         }
     }
 
-    public synchronized boolean checkEntry(String token, String id){
-        String value = tokenMap.get(token);
+    public synchronized boolean checkEntry(String id, String token){
+        String value = tokenMap.get(id);
         if(value != null){
-            return value.equals(id);
+            return value.equals(token);
         }else{
             return false;
         }
     }
 
-    public synchronized boolean deleteEntry(String token, String id){
-        String value = tokenMap.get(token);
+    public synchronized boolean deleteEntry(String id, String token){
+        String value = tokenMap.get(id);
         if(value != null){
-            tokenMap.remove(token);
+            tokenMap.remove(id);
             return true;
         }else{
             return false;

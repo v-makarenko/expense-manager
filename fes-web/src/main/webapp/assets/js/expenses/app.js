@@ -8,18 +8,14 @@ angular.module('app', [
         function ($routeProvider) {
             $routeProvider.
                 when('/list', {
-                    templateUrl: 'assets/html/expenses-list.html',
+                    templateUrl: 'assets/html/expenses/expenses-list.html',
                     controller: 'ExpensesListController',
                     requiresLogin: true
                 }).
                 when('/print/:dateFrom/:dateTo', {
-                    templateUrl: 'assets/html/print-list.html',
+                    templateUrl: 'assets/html/expenses/print-list.html',
                     controller: 'PrintController',
                     requiresLogin: true
-                }).
-                when('/main', {
-                    templateUrl: 'assets/html/main-page.html',
-                    controller: 'MainPageController'
                 }).
 
                 otherwise({
@@ -32,8 +28,8 @@ angular.module('app', [
             $rootScope.authenticated = result.status == 'OK';
 
             var callback = function() {
-                if ($location.url() != 'main' && !$rootScope.authenticated) {
-                    $location.path('/main');
+                if (!$rootScope.authenticated) {
+                    location.replace('/fes/index.jsp');
                 }
             }
 

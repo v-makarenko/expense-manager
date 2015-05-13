@@ -42,9 +42,9 @@ public class UserService {
         em.persist(user);
     }
 
-    public User findByEmailAndPassword(String username, String password) {
+    public User findByEmailAndPassword(String email, String password) {
         List<User> userList = dao.findAll(new CommonFilter(new UserFilter()
-                .username(username)
+                .email(email)
                 .password(password)));
         if(userList.isEmpty()){
             return null;
