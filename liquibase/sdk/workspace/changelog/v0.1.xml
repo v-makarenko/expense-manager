@@ -1,0 +1,77 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="init structure #1" author="vmakarenko">
+        <sql>
+            CREATE TABLE users (
+            id uuid PRIMARY KEY,
+            name text,
+            surname text,
+            email text NOT NULL,
+            phone text,
+            password text NOT NULL
+            );
+
+            CREATE TABLE expense_categories(
+            id uuid PRIMARY KEY,
+            name text
+            );
+
+            CREATE TABLE default_expense_categories(
+            id uuid PRIMARY KEY,
+            name text
+            );
+
+            CREATE TABLE expense_currencies (
+            id uuid PRIMARY KEY,
+            name text NOT NULL,
+            symbol text NOT NULL
+            );
+
+            CREATE TABLE expenses (
+            id uuid PRIMARY KEY,
+            name text,
+            description text,
+            currency_id uuid REFERENCES expense_currencies(id),
+            expense_categories uuid REFERENCES expense_categories(id)
+            );
+
+            CREATE TABLE tags (
+            id uuid PRIMARY KEY,
+            name text
+            );
+
+            CREATE TABLE tags_conn_expenses (
+            expense_id uuid REFERENCES expenses(id),
+            tag_id uuid  REFERENCES tags(id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="init structure #2" author="vmakarenko">
+        <sql>
+            ALTER TABLE expenses RENAME COLUMN expense_categories TO expense_category_id;
+            ALTER TABLE expenses ADD COLUMN user_id uuid REFERENCES users(id);
+        </sql>
+    </changeSet>
+    <changeSet id="init structure #3" author="vmakarenko">
+        <sql>
+            ALTER TABLE expenses ADD COLUMN total numeric(17,2) NOT NULL;
+        </sql>
+    </changeSet>
+    <changeSet id="add admin" author="vmakarenko">
+        <sql>
+            INSERT INTO users (id,name,surname,email,phone, password)
+            VALUES ('82a62ea7-59e9-467c-9417-eea7a8351b80', 'admin', 'admin',  'admin@admin.ru', '+79090671824', 'admin');
+        </sql>
+    </changeSet>
+    <changeSet id="add default_categories" author="vmakarenko">
+        <sql>
+            INSERT INTO users (id,name,surname,email,phone, password)
+            VALUES ('82a62ea7-59e9-467c-9417-eea7a8351b80', 'admin', 'admin',  'admin@admin.ru', '+79090671824', 'admin');
+        </sql>
+    </changeSet>
+</databaseChangeLog>

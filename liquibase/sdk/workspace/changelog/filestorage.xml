@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="20150325 # create file_content table"  author="alvov">
+        <sql>
+            CREATE TABLE file_content
+			(
+			  content bytea,
+			  id uuid NOT NULL,
+			  CONSTRAINT file_content_pkey PRIMARY KEY (id)
+			)
+			WITH (
+			  OIDS=FALSE
+			);
+			ALTER TABLE file_content
+			  OWNER TO postgres;
+        </sql>
+    </changeSet>
+    <changeSet id="20150409 # some changes"  author="alvov">
+        <sql>
+            ALTER TABLE file_content ADD COLUMN create_time bigint;
+            ALTER TABLE file_content ALTER COLUMN create_time SET NOT NULL;
+            COMMENT ON COLUMN file_content.create_time IS 'Вермя создания записи';
+
+            ALTER TABLE file_content ADD COLUMN update_time bigint;
+            ALTER TABLE file_content ALTER COLUMN update_time SET NOT NULL;
+            COMMENT ON COLUMN file_content.update_time IS 'Время обновления записи';
+
+            ALTER TABLE file_content ADD COLUMN status text;
+            ALTER TABLE file_content ALTER COLUMN status SET NOT NULL;
+            COMMENT ON COLUMN file_content.status IS 'статус записи';
+
+            ALTER TABLE file_content ADD COLUMN wired boolean;
+            ALTER TABLE file_content ALTER COLUMN wired SET NOT NULL;
+            COMMENT ON COLUMN file_content.wired IS 'подтверждение привязки файла к документу';
+        </sql>
+    </changeSet>
+    <changeSet id="20150410 # replace wired "  author="alvov">
+        <sql>
+            ALTER TABLE file_content DROP COLUMN wired;
+        </sql>
+    </changeSet>
+    <changeSet id="20150410 # add key "  author="alvov">
+        <sql>
+            ALTER TABLE file_content DROP CONSTRAINT file_content_pkey;
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>

@@ -5,18 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.fes</groupId>
-    <artifactId>fes</artifactId>
+    <artifactId>fes-common</artifactId>
     <version>1.0</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.8.Final</version>
+        </dependency>
 
+    </dependencies>
 
-    <modules>
-        <module>fes-ejb</module>
-        <module>fes-web</module>
-        <module>fes-common</module>
-        <module>fes-ear</module>
-    </modules>
-
-
-
+    
 </project>

@@ -1,0 +1,73 @@
+<div id="registration-modal" class="modal fade" ng-controller="RegistrationController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="myForm" ng-submit="register()" ng-controller="ModalController">
+                <div class="modal-header">
+                    Регистрация
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label>Логин: </label>
+                            </div>
+                            <div class="col-xs-7">
+                                <input type="text" class="form-control" ng-model="newUser.username"
+                                       ng-change="checkUsername()" required>
+                                <small class="text-danger" ng-show="loginError">
+                                    {{loginError}}
+                                </small>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label>Пароль: </label>
+                            </div>
+                            <div class="col-xs-7">
+                                <input type="password" class="form-control" ng-model="newUser.password" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label>Повторите пароль: </label>
+                            </div>
+                            <div class="col-xs-7">
+                                <input type="password" class="form-control" ng-model="newUser.password2" required>
+                                <small class="text-danger" ng-show="passError">
+                                    {{passError}}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label>E-mail: </label>
+                            </div>
+                            <div class="col-xs-7">
+                                <input type="text" class="form-control" ng-model="newUser.eMail"  required>
+                                <small class="text-danger" ng-show="emailError">
+                                    {{emailError}}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-block">
+                        <button class="btn btn-success" type="submit" ng-disabled="passError || loginError || emailError || !myForm.$valid">Зарегистрироваться</button>
+                        <button class="btn btn-success" data-dismiss="modal">Отмена</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
