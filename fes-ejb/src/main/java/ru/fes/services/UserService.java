@@ -39,7 +39,21 @@ public class UserService {
 
     public void createUser(UserDto dto) {
         User user = mapperService.map(dto, User.class);
+        addDefaults();
         em.persist(user);
+    }
+
+    private void addDefaults() {
+        addDefaultValutas();
+        addDefaultCategories();
+    }
+
+    private void addDefaultValutas() {
+
+    }
+
+    private void addDefaultCategories() {
+
     }
 
     public User findByEmailAndPassword(String email, String password) {

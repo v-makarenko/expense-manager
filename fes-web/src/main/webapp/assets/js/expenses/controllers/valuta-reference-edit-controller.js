@@ -3,7 +3,8 @@
  */
 
 angular.module("app").
-    controller("ReferenceEditController", function ($scope) {
+    controller("ValutaReferenceEditController", function ($scope) {
+
 
 
     });

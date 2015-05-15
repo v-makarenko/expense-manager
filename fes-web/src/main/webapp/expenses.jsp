@@ -41,6 +41,7 @@
     <script src="assets/js/expenses/controllers/registration-controller.js"></script>
     <script src="assets/js/expenses/controllers/modal-controller.js"></script>
     <script src="assets/js/expenses/controllers/chart-controller.js"></script>
+    <script src="assets/js/expenses/controllers/valuta-reference-edit-controller.js"></script>
 
     <script src="assets/js/expenses/services/expenses-service.js"></script>
     <script src="assets/js/common/services/auth-service.js"></script>

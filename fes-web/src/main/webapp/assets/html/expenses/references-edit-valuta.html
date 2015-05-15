@@ -1,0 +1,12 @@
+<div class="row text-center header-main">
+
+    <span class="h1 ">Настройка валют <button type="button" ng-click="openAddEditValutaModal()">+</button> </span>
+
+    <div>
+        <div ng-repeat="valutaItem in valutaList">
+            {{$index+1}}. {{valutaItem.name}} <button type="button" ng-click="openAddEditValutaModal($index)">E</button>
+            <button type="button" ng-click="deleteValutaItem($index)">D</button>
+        </div>
+    </div>
+
+</div>

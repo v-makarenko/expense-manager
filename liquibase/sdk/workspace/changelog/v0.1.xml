@@ -68,7 +68,7 @@
             VALUES ('82a62ea7-59e9-467c-9417-eea7a8351b80', 'admin', 'admin',  'admin@admin.ru', '+79090671824', 'admin');
         </sql>
     </changeSet>
-    <changeSet id="add default_categories" author="vmakarenko">
+    <changeSet id="add default_valuta" author="vmakarenko">
         <sql>
             INSERT INTO users (id,name,surname,email,phone, password)
             VALUES ('82a62ea7-59e9-467c-9417-eea7a8351b80', 'admin', 'admin',  'admin@admin.ru', '+79090671824', 'admin');

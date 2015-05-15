@@ -22,9 +22,9 @@ angular.module('app', [
                     controller: 'AnalyticsController',
                     requiresLogin: true
                 }).
-                when('/references/:referenceName', {
-                    templateUrl: 'assets/html/expenses/reference-edit.html',
-                    controller: 'ReferenceEditController',
+                when('/references/valuta', {
+                    templateUrl: 'assets/html/expenses/reference-edit-valuta.html',
+                    controller: 'ValutaReferenceEditController',
                     requiresLogin: true
                 }).
 
