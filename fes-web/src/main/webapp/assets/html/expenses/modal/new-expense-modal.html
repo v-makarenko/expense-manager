@@ -1,16 +1,32 @@
 <div id="edit-expense-modal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class="form" name="newExpenseForm"  ng-submit="saveExpense()" ng-controller="ModalController">
+            <form class="form" name="newExpenseForm" ng-submit="saveExpense()" ng-controller="ModalController">
                 <div class="modal-header">
-                    <h3>{{newExpense ? "New Expense" : "Edit Expense"}}</h3>
+                    <h3>{{newExpense ? "Новая транзакция" : "Редактировать транзакцию"}}</h3>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        <div class="btn-group">
+                            <label class="btn btn-primary" ng-model="currentExpense.transactionType"
+                                   btn-radio="'income'">Доход</label>
+                            <label class="btn btn-primary" ng-model="currentExpense.transactionType"
+                                   btn-radio="'outcome'">Расход</label>
+                            <label class="btn btn-primary" ng-model="currentExpense.transactionType" btn-radio="'move'">Перемещение</label>
+                        </div>
+                    </div>
+                    <div class="modal-body">
                         <label for="expense-amount">
-                            Amount:
+                            Категория:
                         </label>
-                        <input id="expense-amount" name="expenseAmount" class="form-control" placeholder="Enter amount"
+                        <div class="form-group">
+                            <select ng-options="category.id as category.name in categories" ng-model="currentExpense.categoryId"></select>
+                        </div>
+                    <div class="form-group">
+                        <label for="expense-amount">
+                            Сумма:
+                        </label>
+                        <input id="expense-amount" name="expenseAmount" class="form-control" placeholder="Введите сумму"
                                ng-required maxlength="19"
                                ng-model="currentExpense.amount">
 
@@ -89,13 +105,13 @@
                         </div>
                     </div>
                     <!--<div>-->
-                        <!--{{newExpenseForm.$valid}}-->
+                    <!--{{newExpenseForm.$valid}}-->
                     <!--</div>-->
                     <!--<div>-->
-                        <!--{{newExpenseForm}}-->
+                    <!--{{newExpenseForm}}-->
                     <!--</div>-->
                     <!--<div>-->
-                        <!--{{myForm}}-->
+                    <!--{{myForm}}-->
                     <!--</div>-->
                 </div>
                 <div class="modal-footer">

@@ -1,143 +1,27 @@
-<div class="row text-center header-main">
+<div class="row text-center">
 
-    <span class="h1 "></span>
+    <span class="h1"></span>
 </div>
-<div class="row">
-    <div class="col-xs-3">
-
-        <div class="row">
-            <div class="widget-block">
-                <div class="h4 widget-header">МЕНЮ</div>
-                <a  class="btn full-width-group btn-success menu-btn" style="margin-bottom: 8px" ng-href="#/list">Последние траты
-                </a>
-                <a class="btn full-width-group btn-success menu-btn" style="margin-bottom: 8px" ng-href="#/plan"></span>Планирование трат
-                </a>
-                <a class="btn full-width-group btn-success menu-btn" style="margin-bottom: 8px" ng-href="#/analitycs"></span>Аналитика
-                </a>
-
-                <accordion close-others="oneAtATime" ><!--class="btn full-width-group btn-success"-->
-                    <accordion-group heading="Справочники">
-                        <div>
-                            <a ng-href="#/references/valuta" >Справочник валют</a>
-                        </div>
-                        <div>
-                            <a ng-href="#/references/expenseArticles" >Категория затрат</a>
-                        </div>
-                        </accordion-group>
-                </accordion>
-            </div>
-            <div class="widget-block row">
-                <div class="col-xs-8" >Вы вошли как: <b>{{user.surname}} {{user.name}}</b></div>
-                <button type="button" class="btn btn-warning col-xs-4" ng-click="logout()">Выйти</button>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-9">
-        <div class="widget-block">
-            <div class="h3 widget-header" style="margin-bottom: 0px"> Недавние траты</div>
-            <div ng-show="!expenses || expenses.length == 0" class="widget-block">
-                <h4>
-                    Нет данных!
-                </h4>
+<div class="widget-block">
+    <div class="h3 widget-header" style="margin-bottom: 0px"> Недавние траты <button type="button" ng-click="addEditExpense()">+</button></div>
+    <div ng-show="!expenses || expenses.length == 0" class="widget-block">
+        <h4>
+            Нет данных!
+        </h4>
                             <span>
                                 Добавьте что-нибудь :)
                             </span>
-            </div>
-            <div ng-repeat="expense in expenses" class="expenses-list row">
-                <div expense-unit
-                     delete-lnr="deleteExpense(id)"
-                     edit-lnr="addEditExpense(id)"
-                     expense-model="expense"></div>
+    </div>
+    <div ng-repeat="expense in expenses" class="expenses-list row">
+        <div expense-unit
+             delete-lnr="deleteExpense(id)"
+             edit-lnr="addEditExpense(id)"
+             expense-model="expense"></div>
 
-            </div>
-
-        </div>
     </div>
 
-    <div class="col-xs-3">
-        <div class="widget-block">
+</div>
 
-            <div class="h3 widget-header"> Filter</div>
-            <form class="form" name="filterForm">
-
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <label>Description</label>
-                        </div>
-                        <div class="col-xs-8">
-
-                            <input type="text" class="form-control" ng-model="filter.description"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <label>Comment</label></div>
-                        <div class="col-xs-8">
-                            <input type="text" class="form-control" ng-model="filter.comment"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <label>Date&nbsp;from</label>
-                        </div>
-                        <div class="col-xs-8">
-                            <div class="input-group date" datepicker>
-                                <input type="text" class="form-control" ng-model="filter.dateFrom"
-                                       data-date-format="YYYY-MM-DD">
-                <span class="input-group-addon" id="request-date-btn1">
-                  <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <label>Date&nbsp;to</label>
-                        </div>
-                        <div class="col-xs-8">
-                            <div class="input-group date" datepicker>
-                                <input type="text" class="form-control" ng-model="filter.dateTo"
-                                       data-date-format="YYYY-MM-DD">
-                <span class="input-group-addon" id="request-date-btn2">
-                  <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <label>Min&nbsp;amount</label>
-                        </div>
-                        <div class="col-xs-8">
-                            <input type="text" class="form-control" ng-model="filter.amountMin">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <label>Max&nbsp;amount</label>
-                        </div>
-                        <div class="col-xs-8">
-                            <input type="text" class="form-control" ng-model="filter.amountMax">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group btn-block">
-                    <button class="btn btn-success" ng-click="doFilter()">OK</button>
-                    <button class="btn btn-warning" ng-click="clearFilter()">Clear</button>
-                </div>
-
-            </form>
-        </div>
-    </div>
-    <ng-include src="'assets/html/expenses/modal/new-expense-modal.html'"></ng-include>
-    <ng-include src="'assets/html/expenses/modal/print-expense-modal.html'"></ng-include>
-    <ng-include src="'assets/html/expenses/modal/chart-expense-modal.html'"></ng-include>
+<ng-include src="'assets/html/expenses/modal/new-expense-modal.html'"></ng-include>
+<ng-include src="'assets/html/expenses/modal/print-expense-modal.html'"></ng-include>
+<ng-include src="'assets/html/expenses/modal/chart-expense-modal.html'"></ng-include>

@@ -49,12 +49,15 @@
 
     <script src="assets/js/expenses/directive/expense-unit.js"></script>
     <script src="assets/js/common/directive/datepicker.js"></script>
+    <script src="assets/js/common/directive/left-menu.js"></script>
 
 </head>
 <body ng-app="app">
 <div class="container-fluid">
-<div ng-view>
-
+    <div class="row">
+    <div class="col-lg-3" left-menu></div>
+<div class="col-lg-9" ng-view>
+</div>
 </div>
 </div>
 

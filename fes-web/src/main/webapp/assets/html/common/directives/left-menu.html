@@ -1,0 +1,24 @@
+<div class="widget-block">
+    <div class="h4 widget-header">МЕНЮ</div>
+    <a  class="btn full-width-group btn-success menu-btn" style="margin-bottom: 8px" ng-href="#/list">Последние траты
+    </a>
+    <a class="btn full-width-group btn-success menu-btn" style="margin-bottom: 8px" ng-href="#/plan"></span>Планирование трат
+    </a>
+    <a class="btn full-width-group btn-success menu-btn" style="margin-bottom: 8px" ng-href="#/analytics"></span>Аналитика
+    </a>
+
+    <accordion close-others="oneAtATime" ><!--class="btn full-width-group btn-success"-->
+        <accordion-group heading="Справочники">
+            <div>
+                <a ng-href="#/references/valuta" >Справочник валют</a>
+            </div>
+            <div>
+                <a ng-href="#/references/expenseArticles" >Категория затрат</a>
+            </div>
+        </accordion-group>
+    </accordion>
+</div>
+<div class="widget-block row">
+    <div class="col-xs-8" >Вы вошли как: <b>{{user.surname}} {{user.name}}</b></div>
+    <button type="button" class="btn btn-warning col-xs-4" ng-click="logout()">Выйти</button>
+</div>
