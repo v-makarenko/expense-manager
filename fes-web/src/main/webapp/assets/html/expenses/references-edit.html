@@ -1,59 +1,8 @@
 <div class="row text-center header-main">
 
-    <span class="h1 "></span>
+    <span class="h1 ">Настройка справочников</span>
 </div>
 <div class="row">
-    <div class="col-xs-3">
-
-        <div class="row">
-            <div class="widget-block">
-                <div class="h4 widget-header">МЕНЮ</div>
-                <a  class="btn full-width-group btn-success menu-btn" style="margin-bottom: 8px" ng-href="#/list">Последние траты
-                </a>
-                <a class="btn full-width-group btn-success menu-btn" style="margin-bottom: 8px" ng-href="#/plan"></span>Планирование трат
-                </a>
-                <a class="btn full-width-group btn-success menu-btn" style="margin-bottom: 8px" ng-href="#/analitycs"></span>Аналитика
-                </a>
-
-                <accordion close-others="oneAtATime" ><!--class="btn full-width-group btn-success"-->
-                    <accordion-group heading="Справочники">
-                        <div>
-                            <a ng-href="#/references/valuta" >Справочник валют</a>
-                        </div>
-                        <div>
-                            <a ng-href="#/references/expenseArticles" >Категория затрат</a>
-                        </div>
-                        </accordion-group>
-                </accordion>
-            </div>
-            <div class="widget-block row">
-                <div class="col-xs-8" >Вы вошли как: <b>{{user.surname}} {{user.name}}</b></div>
-                <button type="button" class="btn btn-warning col-xs-4" ng-click="logout()">Выйти</button>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-9">
-        <div class="widget-block">
-            <div class="h3 widget-header" style="margin-bottom: 0px"> Недавние траты</div>
-            <div ng-show="!expenses || expenses.length == 0" class="widget-block">
-                <h4>
-                    Нет данных!
-                </h4>
-                            <span>
-                                Добавьте что-нибудь :)
-                            </span>
-            </div>
-            <div ng-repeat="expense in expenses" class="expenses-list row">
-                <div expense-unit
-                     delete-lnr="deleteExpense(id)"
-                     edit-lnr="addEditExpense(id)"
-                     expense-model="expense"></div>
-
-            </div>
-
-        </div>
-    </div>
-
     <div class="col-xs-3">
         <div class="widget-block">
 
@@ -138,6 +87,46 @@
             </form>
         </div>
     </div>
-    <ng-include src="'assets/html/expenses/modal/new-expense-modal.html'"></ng-include>
-    <ng-include src="'assets/html/expenses/modal/print-expense-modal.html'"></ng-include>
-    <ng-include src="'assets/html/expenses/modal/chart-expense-modal.html'"></ng-include>
+    <div class="col-xs-6">
+        <div class="widget-block">
+            <div class="h3 widget-header" style="margin-bottom: 0px"> Recent expenses</div>
+            <div ng-show="!expenses || expenses.length == 0" class="widget-block">
+                <h4>
+                    No data to show!
+                </h4>
+                            <span>
+                                Clear filter or add some new expenses :)
+                            </span>
+            </div>
+            <div ng-repeat="expense in expenses" class="expenses-list row">
+                <div expense-unit
+                     delete-lnr="deleteExpense(id)"
+                     edit-lnr="addEditExpense(id)"
+                     expense-model="expense"></div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xs-3">
+
+        <div class="row">
+            <div class="widget-block">
+                <div class="h4 widget-header">Common actions</div>
+                <button type="button" class="btn full-width-group btn-success" style="margin-bottom: 8px" ng-click="addEditExpense()">Add expense
+                </button>
+                <button type="button" class="btn full-width-group btn-success" style="margin-bottom: 8px" ng-click="openPrintDialog()"></span>Print expenses
+                </button>
+                <button type="button" class="btn full-width-group btn-success" ng-click="openChartModal()"></span>Statistics
+                </button>
+            </div>
+        <div class="widget-block row">
+            <div class="col-xs-8" >Logged as: <b>{{user.username}}</b></div>
+            <button type="button" class="btn btn-warning col-xs-4" ng-click="logout()">Logout</button>
+        </div>
+</div>
+    </div>
+
+    <ng-include src="'assets/html/modal/new-expense-modal.html'"></ng-include>
+    <ng-include src="'assets/html/modal/print-expense-modal.html'"></ng-include>
+    <ng-include src="'assets/html/modal/chart-expense-modal.html'"></ng-include>

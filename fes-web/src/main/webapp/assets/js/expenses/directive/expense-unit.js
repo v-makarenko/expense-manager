@@ -23,6 +23,6 @@ angular.module('app')
                 model:"=?expenseModel"
             },
             controller: 'ExpenseUnitController',
-            templateUrl: 'assets/html/directives/expense-unit.html'
+            templateUrl: 'assets/html/expenses/directives/expense-unit.html'
         };
     }]);

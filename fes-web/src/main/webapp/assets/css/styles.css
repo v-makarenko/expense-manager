@@ -52,3 +52,7 @@
 .datepicker {
     z-index: 2000!important;
 }
+
+.menu-btn {
+    text-align: left;
+}

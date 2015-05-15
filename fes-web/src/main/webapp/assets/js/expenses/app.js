@@ -3,7 +3,7 @@
  */
 
 angular.module('app', [
-        'ngRoute','myFilters', 'chart.js'
+        'ngRoute','myFilters', 'chart.js', 'ui.bootstrap'
     ]).config(['$routeProvider',
         function ($routeProvider) {
             $routeProvider.
@@ -15,6 +15,16 @@ angular.module('app', [
                 when('/print/:dateFrom/:dateTo', {
                     templateUrl: 'assets/html/expenses/print-list.html',
                     controller: 'PrintController',
+                    requiresLogin: true
+                }).
+                when('/analytics', {
+                    templateUrl: 'assets/html/expenses/analytics.html',
+                    controller: 'AnalyticsController',
+                    requiresLogin: true
+                }).
+                when('/references/:referenceName', {
+                    templateUrl: 'assets/html/expenses/reference-edit.html',
+                    controller: 'ReferenceEditController',
                     requiresLogin: true
                 }).
 

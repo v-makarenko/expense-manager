@@ -15,7 +15,8 @@
     <script src="assets/js/lib/jquery-ui/jquery-ui.js"></script>
     <script src="assets/js/lib/angular/angular.min.js"></script>
     <script src="assets/js/lib/angular/angular-route.min.js"></script>
-    <script src="assets/js/lib/angular-ui/ui-bootstrap-tpls-0.12.0.js"></script>
+    <script src="assets/js/lib/angular-ui/ui-bootstrap-0.13.0.js"></script>
+    <script src="assets/js/lib/angular-ui/ui-bootstrap-tpls-0.13.0.js"></script>
     <script src="assets/js/lib/angular-tree-ui/angular-ui-tree.js"></script>
     <script src="assets/js/lib/bootstrap/bootstrap.js"></script>
     <script src="assets/js/lib/underscore/underscore.js"></script>
