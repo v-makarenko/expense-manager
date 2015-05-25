@@ -20,7 +20,7 @@ import javax.ws.rs.core.Response;
  */
 
 @ApplicationScoped
-@Path("expenses")
+@Path("private/expenses")
 public class ExpensesResource {
     @Inject
     private ExpensesService expensesService;

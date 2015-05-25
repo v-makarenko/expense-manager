@@ -1,4 +1,4 @@
-package ru.fes.dao.filters;
+package ru.fes.dao.filters.common;
 
 import ru.fes.dao.anno.FilterParam;
 

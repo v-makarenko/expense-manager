@@ -68,10 +68,70 @@
             VALUES ('82a62ea7-59e9-467c-9417-eea7a8351b80', 'admin', 'admin',  'admin@admin.ru', '+79090671824', 'admin');
         </sql>
     </changeSet>
-    <changeSet id="add default_valuta" author="vmakarenko">
+    <changeSet id="add valuta_table" author="vmakarenko">
         <sql>
-            INSERT INTO users (id,name,surname,email,phone, password)
-            VALUES ('82a62ea7-59e9-467c-9417-eea7a8351b80', 'admin', 'admin',  'admin@admin.ru', '+79090671824', 'admin');
+            CREATE TABLE valutas(
+            id uuid PRIMARY KEY,
+            createTime BigInt,
+            updateTime BigInt,
+            is_default Boolean,
+            name text,
+            symbol text
+            );
         </sql>
     </changeSet>
+    <changeSet id="add default_valuta" author="vmakarenko">
+        <sql>
+            INSERT INTO valutas (id,createTime,updateTime,name,is_default,symbol)
+            VALUES ('82a62ea7-59e9-467c-9417-000000000000', 0, 0,  'Рубль', true, 'Р');
+            INSERT INTO valutas (id,createTime,updateTime,name,is_default,symbol)
+            VALUES ('82a62ea7-59e9-467c-9417-000000000001', 0, 0,  'Доллар', true, 'Д');
+            INSERT INTO valutas (id,createTime,updateTime,name,is_default,symbol)
+            VALUES ('82a62ea7-59e9-467c-9417-000000000002', 0, 0,  'Евро', true, 'Р');
+        </sql>
+    </changeSet>
+    <changeSet id="add accounts" author="vmakarenko">
+        <sql>
+            CREATE TABLE accounts(
+            id uuid PRIMARY KEY,
+            name text
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="add accounts # 2" author="vmakarenko">
+        <sql>
+            ALTER TABLE accounts ADD COLUMN user_id uuid REFERENCES users(id);
+        </sql>
+    </changeSet>
+    <changeSet id="add account types" author="vmakarenko">
+    <sql>
+        CREATE TABLE account_types(
+        id uuid PRIMARY KEY,
+        name text,
+        is_default boolean
+        );
+        INSERT INTO account_types (id, name, is_default) values ('82a62ea7-59e9-467c-9418-000000000006', 'Банковские карты' , true);
+        INSERT INTO account_types (id, name, is_default) values ('82a62ea7-59e9-467c-9418-000000000007', 'Наличные деньги' , true);
+        INSERT INTO account_types (id, name, is_default) values ('82a62ea7-59e9-467c-9418-000000000008', 'Банковские счета' , true);
+        INSERT INTO account_types (id, name, is_default) values ('82a62ea7-59e9-467c-9418-000000000009', 'Банковские депозиты' , true);
+    </sql>
+    </changeSet>
+    <changeSet id="add account_type for accounts" author="vmakarenko">
+    <sql>
+        ALTER TABLE accounts ADD COLUMN account_type_id uuid REFERENCES account_types(id);
+    </sql>
+    </changeSet>
+    <changeSet id="create users_accounts" author="vmakarenko">
+        <sql>
+            CREATE TABLE users_accounts(
+            user_id uuid REFERENCES users(id),
+            account_id uuid REFERENCES accounts(id)
+            );
+            INSERT INTO accounts(
+            id, name, user_id, account_type_id)
+            VALUES ('82a62ea7-59e9-467c-9418-000000000010', 'Мой кошелек', '82a62ea7-59e9-467c-9417-eea7a8351b80','82a62ea7-59e9-467c-9418-000000000007');
+            INSERT INTO users_accounts (user_id, account_id) values ('82a62ea7-59e9-467c-9417-eea7a8351b80','82a62ea7-59e9-467c-9418-000000000010');
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>

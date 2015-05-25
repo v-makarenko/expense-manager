@@ -1,22 +1,7 @@
 package ru.fes.services;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import ru.fes.dao.filters.CommonFilter;
-import ru.fes.dao.filters.UserFilter;
-import ru.fes.dao.impl.common.UserDao;
-import ru.fes.dto.user.UserDto;
-import ru.fes.entities.common.User;
-import ru.fes.services.common.MapperService;
-import ru.fes.services.expenses.CategoryService;
-
 import javax.ejb.Singleton;
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

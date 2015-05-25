@@ -42,11 +42,15 @@
     <script src="assets/js/expenses/controllers/modal-controller.js"></script>
     <script src="assets/js/expenses/controllers/chart-controller.js"></script>
     <script src="assets/js/expenses/controllers/valuta-reference-edit-controller.js"></script>
+    <script src="assets/js/expenses/controllers/valuta-reference-modal-controller.js"></script>
+    <script src="assets/js/expenses/controllers/account-reference-edit-controller.js"></script>
 
     <script src="assets/js/expenses/services/expenses-service.js"></script>
     <script src="assets/js/common/services/auth-service.js"></script>
     <script src="assets/js/expenses/services/user-service.js"></script>
     <script src="assets/js/expenses/services/chart-service.js"></script>
+    <script src="assets/js/expenses/services/valuta-reference-service.js"></script>
+    <script src="assets/js/expenses/services/account-reference-service.js"></script>
 
     <script src="assets/js/expenses/directive/expense-unit.js"></script>
     <script src="assets/js/common/directive/datepicker.js"></script>

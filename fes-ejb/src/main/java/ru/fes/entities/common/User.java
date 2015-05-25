@@ -1,11 +1,11 @@
 package ru.fes.entities.common;
 
 import org.hibernate.annotations.Proxy;
+import ru.fes.entities.expenses.Account;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by VMakarenko on 2/3/15.
@@ -25,6 +25,11 @@ public class User extends DomainEntity {
     private String surname;
     @Column(name="phone")
     private String phone;
+    @ManyToMany
+    @JoinTable(name = "userы_accountы",
+            joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name="account_id"))
+    private List<Account> accountList;
 
     public String getPassword() {
         return password;
@@ -65,5 +70,13 @@ public class User extends DomainEntity {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<Account> getAccountList() {
+        return accountList;
+    }
+
+    public void setAccountList(List<Account> accountList) {
+        this.accountList = accountList;
     }
 }

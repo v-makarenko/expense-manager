@@ -2,7 +2,7 @@ package ru.fes.dao.generic;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.fes.dao.filters.CommonFilter;
+import ru.fes.dao.filters.common.CommonFilter;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

@@ -48,9 +48,11 @@ public class AuthResource {
     public Response login(UserAuthDto dto, @Context HttpServletRequest request) {
         AccessAuthDto accessAuthDto = authService.login(dto);
         if (accessAuthDto != null) {
+            String path = "/";
+            String domain = request.getServerName();
             tokenService.createEntry(accessAuthDto.getId(), accessAuthDto.getToken());
-            NewCookie tokenCookie = new NewCookie(AccessAuthDto.COOKIE_TOKEN, accessAuthDto.getToken(), null, null, "", -1, false);
-            NewCookie idCookie = new NewCookie(AccessAuthDto.COOKIE_ID, accessAuthDto.getId(), null, null, "", -1, false);
+            NewCookie tokenCookie = new NewCookie(AccessAuthDto.COOKIE_TOKEN, accessAuthDto.getToken(), path, domain, "", -1, false);
+            NewCookie idCookie = new NewCookie(AccessAuthDto.COOKIE_ID, accessAuthDto.getId(), path, domain, "", -1, false);
             return Response.ok(RestResult.getOk()).cookie(tokenCookie).cookie(idCookie).build();
         } else {
             return Response.ok(RestResult.getBad()).build();

@@ -2,12 +2,10 @@ package ru.fes.services.common;
 
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
-import ru.fes.dto.expenses.CategoryDto;
-import ru.fes.dto.expenses.ExpenseDto;
+import ru.fes.dto.expenses.*;
 import ru.fes.dto.user.UserDto;
 import ru.fes.entities.common.User;
-import ru.fes.entities.expenses.Category;
-import ru.fes.entities.expenses.Expense;
+import ru.fes.entities.expenses.*;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -33,6 +31,13 @@ public class MapperService {
                 .byDefault().register();
         mapperFactory.classMap(UserDto.class, User.class)
                 .byDefault().register();
+        mapperFactory.classMap(ValutaDto.class, Valuta.class)
+                .byDefault().register();
+        mapperFactory.classMap(AccountDto.class, Account.class)
+                .byDefault().register();
+        mapperFactory.classMap(AccountTypeDto.class, AccountType.class)
+                .byDefault().register();
+
     }
 
     public MapperFactory getMapperFactory() {

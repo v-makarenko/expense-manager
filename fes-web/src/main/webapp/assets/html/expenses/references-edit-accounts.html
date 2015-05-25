@@ -1,0 +1,27 @@
+<div class="row text-center">
+
+    <span class="h1"></span>
+</div>
+<div class="widget-block">
+    <div class="h3 widget-header" style="margin-bottom: 0px"> Мои счета <button type="button" ng-click="addEditExpense()">+</button></div>
+    <div ng-show="!account || expenses.length == 0" class="widget-block">
+        <h4>
+            Нет категорий!
+        </h4>
+                            <span>
+                                Добавьте что-нибудь :)
+                            </span>
+    </div>
+    <div ng-repeat="category in accountCategories">
+        <div>
+            {{$index + 1}}. {{category.name}}
+        </div>
+        <div ng-repeat="account in category.accounts">
+            -- {{account.name}}
+        </div>
+
+    </div>
+
+</div>
+
+<!--<ng-include src="'assets/html/expenses/modal/new-expense-modal.html'"></ng-include>-->

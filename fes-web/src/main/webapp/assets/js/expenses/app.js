@@ -23,8 +23,18 @@ angular.module('app', [
                     requiresLogin: true
                 }).
                 when('/references/valuta', {
-                    templateUrl: 'assets/html/expenses/reference-edit-valuta.html',
+                    templateUrl: 'assets/html/expenses/references-edit-valuta.html',
                     controller: 'ValutaReferenceEditController',
+                    requiresLogin: true
+                }).
+                when('/references/expenseArticles', {
+                    templateUrl: 'assets/html/expenses/references-edit-expenses.html',
+                    controller: 'ValutaReferenceEditController',
+                    requiresLogin: true
+                }).
+                when('/references/accounts', {
+                    templateUrl: 'assets/html/expenses/references-edit-accounts.html',
+                    controller: 'AccountReferenceEditController',
                     requiresLogin: true
                 }).
 
