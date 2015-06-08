@@ -11,17 +11,17 @@ import java.util.Map;
 public class TokenService {
     private Map<String, String> tokenMap = new HashMap();
 
-    public  synchronized boolean createEntry(String id, String token){
-        if(checkEntry(id, token)){
+    public  synchronized boolean createEntry(String username, String token){
+        if(checkEntry(username, token)){
             return false;
         }else {
-            tokenMap.put(id, token);
+            tokenMap.put(username, token);
             return true;
         }
     }
 
-    public synchronized boolean checkEntry(String id, String token){
-        String value = tokenMap.get(id);
+    public synchronized boolean checkEntry(String username, String token){
+        String value = tokenMap.get(username);
         if(value != null){
             return value.equals(token);
         }else{
@@ -29,10 +29,10 @@ public class TokenService {
         }
     }
 
-    public synchronized boolean deleteEntry(String id, String token){
-        String value = tokenMap.get(id);
+    public synchronized boolean deleteEntry(String username, String token){
+        String value = tokenMap.get(username);
         if(value != null){
-            tokenMap.remove(id);
+            tokenMap.remove(username);
             return true;
         }else{
             return false;
