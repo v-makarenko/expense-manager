@@ -54,8 +54,7 @@ public class ValutaReferenceResource {
 
 
     @DELETE
-    @Path("{id}")
-    public Response delete(@PathParam(value = "id") UUID id
+    public Response delete(@QueryParam(value = "id") UUID id
             , @Context HttpServletRequest request){
         service.delete(id);
         return Response.ok().build();

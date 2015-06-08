@@ -3,8 +3,8 @@
  */
 
 angular.module("app")
-    .service("ValutaReferenceService", ['$http',
-function ValutaReferenceService($http ) {
+    .service("AccountReferenceService", ['$http',
+function AccountReferenceService($http ) {
     var url ="api/references/accounts";
 
     this.getAll = function(filter){

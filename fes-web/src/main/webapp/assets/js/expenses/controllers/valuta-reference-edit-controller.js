@@ -29,11 +29,14 @@ angular.module("app").
             }else{
                 action = ValutaReferenceService.update;
             }
-            action($scope.currentValuta);
+            action($scope.currentValuta).success(function(){
+                $('#valuta-modal').modal('hide');
+                $scope.getAll();
+            });
         };
 
-        $scope.deleteValuta = function(id){
-            ValutaReferenceService.delete(id);
+        $scope.deleteValutaItem = function(id){
+            ValutaReferenceService.delete($scope.valutaList[id].id);
             $scope.getAll();
         };
 
