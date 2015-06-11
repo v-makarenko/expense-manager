@@ -3,8 +3,8 @@
     <span class="h1"></span>
 </div>
 <div class="widget-block">
-    <div class="h3 widget-header" style="margin-bottom: 0px"> Места хранения <button type="button" ng-click="addEditAccount()">+</button></div>
-    <div ng-show="accounts.length == 0" class="widget-block">
+    <div class="h3 widget-header" style="margin-bottom: 0px"> Места хранения <button type="button" ng-click="openAddEditAccountModal()">+</button></div>
+    <div ng-show="!accountList || accountList.length == 0" class="widget-block">
         <h4>
             Нет мест хранения!
         </h4>
@@ -12,14 +12,11 @@
                                 Добавьте что-нибудь :)
                             </span>
     </div>
-    <div ng-repeat="account in accounts">
+    <div ng-repeat="account in accountList">
         <div>
-            {{$index + 1}}. {{account.name}}
+            {{$index + 1}}. {{account.name}} <button type="button" ng-click="openAddEditAccountModal($index)">E</button>
+            <button type="button" ng-click="deleteAccountItem($index)">D</button>
         </div>
-        <div ng-repeat="account in accounts">
-            -- {{account.name}}
-        </div>
-
     </div>
 
 </div>

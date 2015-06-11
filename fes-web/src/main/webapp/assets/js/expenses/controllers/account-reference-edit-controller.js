@@ -36,10 +36,10 @@ angular.module("app").
         };
 
         $scope.deleteAccountItem = function(id){
-            AccountReferenceService.delete($scope.accountList[id].id);
-            $scope.getAll();
+            AccountReferenceService.delete($scope.accountList[id].id).success(function(){
+                $scope.getAll();
+            });
         };
 
         $scope.getAll();
-
     });

@@ -11,12 +11,12 @@ function AccountReferenceService($http ) {
         return $http.post(url + "/all", filter);
     };
 
-    this.insert = function(valuta){
-        return $http.post(url, valuta);
+    this.insert = function(account){
+        return $http.post(url, account);
     };
 
-    this.update = function(valuta){
-        return $http.put(url, valuta);
+    this.update = function(account){
+        return $http.put(url, account);
     };
 
     this.delete = function(id){
