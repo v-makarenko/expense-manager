@@ -4,10 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import ru.fes.common.AppConsts;
+import ru.fes.dao.impl.expenses.AccountDao;
 import ru.fes.dao.impl.expenses.ValutaDao;
+import ru.fes.dto.expenses.AccountDto;
 import ru.fes.dto.expenses.ValutaDto;
 import ru.fes.entities.ExpensesFilter;
 import ru.fes.entities.common.User;
+import ru.fes.entities.expenses.Account;
 import ru.fes.entities.expenses.Expense;
 import ru.fes.entities.expenses.Valuta;
 import ru.fes.services.UserService;
@@ -28,37 +31,37 @@ import java.util.UUID;
  * Created by VMakarenko on 2/4/15.
  */
 @Stateless
-public class ValutaService {
-    private static final Logger logger = LoggerFactory.getLogger(ValutaService.class);
+public class AccountService {
+    private static final Logger logger = LoggerFactory.getLogger(AccountService.class);
     @PersistenceContext
     EntityManager em;
 
     @Inject
-    ValutaDao dao;
+    AccountDao dao;
 
     @Inject
     MapperService mapperService;
 
 
 
-    public List<ValutaDto> getAll() {
-        return mapperService.map(dao.findAll(), ValutaDto.class);
+    public List<AccountDto> getAll() {
+        return mapperService.map(dao.findAll(), AccountDto.class);
     }
 
 
-    public void update(ValutaDto dto) {
-        dao.update(mapperService.map(dto, Valuta.class));
+    public void update(AccountDto dto) {
+        dao.update(mapperService.map(dto, Account.class));
     }
 
-    public void create(ValutaDto dto) {
-        dao.insert(mapperService.map(dto, Valuta.class));
+    public void create(AccountDto dto) {
+        dao.insert(mapperService.map(dto, Account.class));
     }
 
     public void delete(UUID id) {
-        Valuta valuta =
-                em.getReference(Valuta.class, id);
-        if (valuta != null) {
-            em.remove(valuta);
+        Account account =
+                em.getReference(Account.class, id);
+        if (account != null) {
+            em.remove(account);
         } else {
             throw new RuntimeException("Wrong id!");
         }

@@ -1,4 +1,4 @@
-package ru.fes.rest;
+package ru.fes.rest.references;
 
 import ru.fes.common.RestResult;
 import ru.fes.dto.expenses.AccountDto;
@@ -6,9 +6,7 @@ import ru.fes.services.expenses.AccountService;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.UUID;
@@ -18,10 +16,11 @@ import java.util.UUID;
  */
 
 @ApplicationScoped
-@Path("references/accounts")
-public class AccountResource {
+@Path("references/account")
+public class AccountReferenceResource {
     @Inject
     private AccountService service;
+
 
     @POST
     @Path("all")
@@ -33,7 +32,7 @@ public class AccountResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(AccountDto dto, @Context HttpServletRequest request){
+    public Response update(AccountDto dto){
         service.update(dto);
         return Response.ok().build();
     }
@@ -41,15 +40,14 @@ public class AccountResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create(AccountDto dto, @Context HttpServletRequest request){
+    public Response create(AccountDto dto){
         service.create(dto);
         return Response.ok().build();
     }
 
 
     @DELETE
-    public Response delete(@QueryParam(value = "id") UUID id
-            , @Context HttpServletRequest request){
+    public Response delete(@QueryParam(value = "id") UUID id){
         service.delete(id);
         return Response.ok().build();
     }

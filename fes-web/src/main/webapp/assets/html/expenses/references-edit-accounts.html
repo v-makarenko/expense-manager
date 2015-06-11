@@ -3,20 +3,20 @@
     <span class="h1"></span>
 </div>
 <div class="widget-block">
-    <div class="h3 widget-header" style="margin-bottom: 0px"> Мои счета <button type="button" ng-click="addEditExpense()">+</button></div>
-    <div ng-show="!account || expenses.length == 0" class="widget-block">
+    <div class="h3 widget-header" style="margin-bottom: 0px"> Места хранения <button type="button" ng-click="addEditAccount()">+</button></div>
+    <div ng-show="accounts.length == 0" class="widget-block">
         <h4>
-            Нет категорий!
+            Нет мест хранения!
         </h4>
                             <span>
                                 Добавьте что-нибудь :)
                             </span>
     </div>
-    <div ng-repeat="category in accountCategories">
+    <div ng-repeat="account in accounts">
         <div>
-            {{$index + 1}}. {{category.name}}
+            {{$index + 1}}. {{account.name}}
         </div>
-        <div ng-repeat="account in category.accounts">
+        <div ng-repeat="account in accounts">
             -- {{account.name}}
         </div>
 
@@ -24,4 +24,4 @@
 
 </div>
 
-<!--<ng-include src="'assets/html/expenses/modal/new-expense-modal.html'"></ng-include>-->
+<ng-include src="'assets/html/expenses/modal/account-edit-modal.html'"></ng-include>
