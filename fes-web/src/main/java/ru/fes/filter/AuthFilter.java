@@ -42,7 +42,7 @@ public class AuthFilter implements Filter{
             }
         }
         if(token != null && id != null && tokenService.checkEntry(id, token)){
-            sessionService.setUserId(UUID.fromString(id));
+            sessionService.setEmail(id);
             filterChain.doFilter(servletRequest, servletResponse);
         } else{
             resp.sendError(HttpServletResponse.SC_FORBIDDEN);

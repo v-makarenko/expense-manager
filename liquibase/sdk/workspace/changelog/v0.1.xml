@@ -4,7 +4,7 @@
         xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet id="init structure #1" author="vmakarenko">
+    <changeSet id="201512060913" author="vmakarenko">
         <sql>
             CREATE TABLE users (
             id uuid PRIMARY KEY,
@@ -51,24 +51,24 @@
         </sql>
     </changeSet>
 
-    <changeSet id="init structure #2" author="vmakarenko">
+    <changeSet id="201512060915" author="vmakarenko">
         <sql>
             ALTER TABLE expenses RENAME COLUMN expense_categories TO expense_category_id;
             ALTER TABLE expenses ADD COLUMN user_id uuid REFERENCES users(id);
         </sql>
     </changeSet>
-    <changeSet id="init structure #3" author="vmakarenko">
+    <changeSet id="201512060916" author="vmakarenko">
         <sql>
             ALTER TABLE expenses ADD COLUMN total numeric(17,2) NOT NULL;
         </sql>
     </changeSet>
-    <changeSet id="add admin" author="vmakarenko">
+    <changeSet id="201512060917" author="vmakarenko">
         <sql>
             INSERT INTO users (id,name,surname,email,phone, password)
             VALUES ('82a62ea7-59e9-467c-9417-eea7a8351b80', 'admin', 'admin',  'admin@admin.ru', '+79090671824', 'admin');
         </sql>
     </changeSet>
-    <changeSet id="add valuta_table" author="vmakarenko">
+    <changeSet id="201512060918" author="vmakarenko">
         <sql>
             CREATE TABLE valutas(
             id uuid PRIMARY KEY,
@@ -80,7 +80,7 @@
             );
         </sql>
     </changeSet>
-    <changeSet id="add default_valuta" author="vmakarenko">
+    <changeSet id="201512060919" author="vmakarenko">
         <sql>
             INSERT INTO valutas (id,createTime,updateTime,name,is_default,symbol)
             VALUES ('82a62ea7-59e9-467c-9417-000000000000', 0, 0,  'Рубль', true, 'Р');
@@ -90,7 +90,7 @@
             VALUES ('82a62ea7-59e9-467c-9417-000000000002', 0, 0,  'Евро', true, 'Р');
         </sql>
     </changeSet>
-    <changeSet id="add accounts" author="vmakarenko">
+    <changeSet id="201512060920" author="vmakarenko">
         <sql>
             CREATE TABLE accounts(
             id uuid PRIMARY KEY,
@@ -98,12 +98,12 @@
             );
         </sql>
     </changeSet>
-    <changeSet id="add accounts # 2" author="vmakarenko">
+    <changeSet id="201512060921" author="vmakarenko">
         <sql>
             ALTER TABLE accounts ADD COLUMN user_id uuid REFERENCES users(id);
         </sql>
     </changeSet>
-    <changeSet id="add account types" author="vmakarenko">
+    <changeSet id="201512060922" author="vmakarenko">
     <sql>
         CREATE TABLE account_types(
         id uuid PRIMARY KEY,
@@ -116,12 +116,12 @@
         INSERT INTO account_types (id, name, is_default) values ('82a62ea7-59e9-467c-9418-000000000009', 'Банковские депозиты' , true);
     </sql>
     </changeSet>
-    <changeSet id="add account_type for accounts" author="vmakarenko">
+    <changeSet id="201512060924" author="vmakarenko">
     <sql>
         ALTER TABLE accounts ADD COLUMN account_type_id uuid REFERENCES account_types(id);
     </sql>
     </changeSet>
-    <changeSet id="create users_accounts" author="vmakarenko">
+    <changeSet id="201512060925" author="vmakarenko">
         <sql>
             CREATE TABLE users_accounts(
             user_id uuid REFERENCES users(id),
@@ -131,6 +131,17 @@
             id, name, user_id, account_type_id)
             VALUES ('82a62ea7-59e9-467c-9418-000000000010', 'Мой кошелек', '82a62ea7-59e9-467c-9417-eea7a8351b80','82a62ea7-59e9-467c-9418-000000000007');
             INSERT INTO users_accounts (user_id, account_id) values ('82a62ea7-59e9-467c-9417-eea7a8351b80','82a62ea7-59e9-467c-9418-000000000010');
+        </sql>
+    </changeSet>
+    <changeSet id="201512060926" author="vmakarenko">
+        <sql>
+            ALTER TABLE expense_categories ADD COLUMN is_income boolean;
+            ALTER TABLE expense_categories ADD COLUMN is_outcome boolean;
+        </sql>
+    </changeSet>
+    <changeSet id="201512061000" author="vmakarenko">
+        <sql>
+            ALTER TABLE expense_categories ADD COLUMN parent_id uuid REFERENCES expense_categories(id);
         </sql>
     </changeSet>
 

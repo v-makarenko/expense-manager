@@ -1,19 +1,14 @@
 package ru.fes.rest.references;
 
-import ru.fes.common.AppConsts;
 import ru.fes.common.RestResult;
-import ru.fes.dto.expenses.ValutaDto;
-import ru.fes.entities.ExpensesFilter;
-import ru.fes.entities.common.User;
-import ru.fes.entities.expenses.Expense;
-import ru.fes.services.expenses.ExpensesService;
-import ru.fes.services.expenses.ValutaService;
+import ru.fes.dto.expenses.AccountDto;
+import ru.fes.dto.expenses.CategoryDto;
+import ru.fes.services.expenses.AccountService;
+import ru.fes.services.expenses.CategoryService;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.UUID;
@@ -23,10 +18,10 @@ import java.util.UUID;
  */
 
 @ApplicationScoped
-@Path("private/references/valuta")
-public class ValutaReferenceResource {
+@Path("private/references/category")
+public class CategoryReferenceResource {
     @Inject
-    private ValutaService service;
+    private CategoryService service;
 
 
     @POST
@@ -39,7 +34,7 @@ public class ValutaReferenceResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(ValutaDto dto, @Context HttpServletRequest request){
+    public Response update(CategoryDto dto){
         service.update(dto);
         return Response.ok().build();
     }
@@ -47,15 +42,14 @@ public class ValutaReferenceResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create(ValutaDto dto, @Context HttpServletRequest request){
+    public Response create(CategoryDto dto){
         service.create(dto);
         return Response.ok().build();
     }
 
 
     @DELETE
-    public Response delete(@QueryParam(value = "id") UUID id
-            , @Context HttpServletRequest request){
+    public Response delete(@QueryParam(value = "id") UUID id){
         service.delete(id);
         return Response.ok().build();
     }

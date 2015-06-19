@@ -12,6 +12,10 @@ import java.util.UUID;
  */
 public class CategoryDto extends IdDto {
     private String name;
+    private Boolean isIncome = false;
+    private Boolean isOutcome = false;
+    private UUID parentId;
+    private List<CategoryDto> children;
 
     public String getName() {
         return name;
@@ -19,5 +23,37 @@ public class CategoryDto extends IdDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Boolean getIsIncome() {
+        return isIncome;
+    }
+
+    public Boolean getIsOutcome() {
+        return isOutcome;
+    }
+
+    public UUID getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(UUID parentId) {
+        this.parentId = parentId;
+    }
+
+    public List<CategoryDto> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<CategoryDto> children) {
+        this.children = children;
+    }
+
+    public void setIsIncome(Boolean isIncome) {
+        this.isIncome = isIncome;
+    }
+
+    public void setIsOutcome(Boolean isOutcome) {
+        this.isOutcome = isOutcome;
     }
 }

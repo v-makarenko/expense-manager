@@ -28,8 +28,8 @@ angular.module('app', [
                     requiresLogin: true
                 }).
                 when('/references/expenseArticles', {
-                    templateUrl: 'assets/html/expenses/references-edit-expenses.html',
-                    controller: 'ValutaReferenceEditController',
+                    templateUrl: 'assets/html/expenses/references-edit-expense-articles.html',
+                    controller: 'CategoryReferenceEditController',
                     requiresLogin: true
                 }).
                 when('/references/accounts', {

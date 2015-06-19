@@ -33,7 +33,7 @@ public class AccountResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(AccountDto dto, @Context HttpServletRequest request){
+    public Response update(AccountDto dto){
         service.update(dto);
         return Response.ok().build();
     }
@@ -41,15 +41,14 @@ public class AccountResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create(AccountDto dto, @Context HttpServletRequest request){
+    public Response create(AccountDto dto){
         service.create(dto);
         return Response.ok().build();
     }
 
 
     @DELETE
-    public Response delete(@QueryParam(value = "id") UUID id
-            , @Context HttpServletRequest request){
+    public Response delete(@QueryParam(value = "id") UUID id){
         service.delete(id);
         return Response.ok().build();
     }

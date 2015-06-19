@@ -3,9 +3,9 @@
  */
 
 angular.module("app")
-    .service("AccountReferenceService", ['$http',
-function AccountReferenceService($http ) {
-    var url ="api/private/references/accounts";
+    .service("CategoryReferenceService", ['$http',
+function CategoryReferenceService($http ) {
+    var url ="api/private/references/category";
 
     this.getAll = function(filter){
         return $http.post(url + "/all", filter);

@@ -5,7 +5,7 @@
 angular.module("app")
     .service("ValutaReferenceService", ['$http',
 function ValutaReferenceService($http ) {
-    var url ="api/references/valuta";
+    var url ="api/private/references/valuta";
 
     this.getAll = function(filter){
         return $http.post(url + "/all", filter);

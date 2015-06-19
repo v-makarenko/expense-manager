@@ -1,0 +1,46 @@
+<div id="category-modal" class="modal fade" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form" name="myForm" ng-submit="saveCategory()" ng-controller="ModalController">
+            <div class="modal-header">
+                Редактирование категории
+            </div>
+            <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label>Название: </label>
+                            </div>
+                            <div class="col-xs-7">
+                                <input type="text" class="form-control" ng-model="currentCategory.name">
+                            </div>
+
+                        </div>
+                        <div>
+                            <label>Доход:
+                                <input type="checkbox" ng-model="currentCategory.isIncome"
+                                       ng-true-value="true" ng-false-value="false"/>
+                            </label>
+                        </div>
+                        <div>
+                            <label>Расход:
+                                <input type="checkbox" ng-model="currentCategory.isOutcome"
+                                       ng-true-value="true" ng-false-value="false"/>
+                            </label>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="btn-block">
+                    <button class="btn btn-success" type="submit">Сохранить</button>
+                    <button class="btn btn-success" data-dismiss="modal">Отмена</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

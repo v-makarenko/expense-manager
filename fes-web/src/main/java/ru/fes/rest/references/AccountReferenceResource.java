@@ -16,7 +16,7 @@ import java.util.UUID;
  */
 
 @ApplicationScoped
-@Path("references/account")
+@Path("private/references/account")
 public class AccountReferenceResource {
     @Inject
     private AccountService service;

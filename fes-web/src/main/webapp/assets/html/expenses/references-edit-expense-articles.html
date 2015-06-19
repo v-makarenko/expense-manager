@@ -1,0 +1,20 @@
+<div class="row text-center">
+
+    <span class="h1"></span>
+</div>
+<div class="widget-block">
+    <div class="h3 widget-header" style="margin-bottom: 0px"> Категории затрат и доходов <button type="button" ng-click="openAddEditCategoryModal()">+</button></div>
+    <div ng-show="!categories || categories.length == 0" class="widget-block">
+        <h4>
+            Нет категорий!
+        </h4>
+                            <span>
+                                Добавьте что-нибудь :)
+                            </span>
+    </div>
+    <expense-categories categories-list="categories">
+        </expense-categories>
+
+</div>
+
+<ng-include src="'assets/html/expenses/modal/category-edit-modal.html'"></ng-include>
